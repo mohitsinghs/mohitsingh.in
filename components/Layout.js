@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 export default function Layout({
   children,
-  title = 'Mohit Singh',
+  title = 'Blog of Mohit Singh',
   description = 'Mohit Singh is a Software Engineer, Open Sourcerer, Physics Enthusiast and Fitness Freak',
   url = '',
   home = false,

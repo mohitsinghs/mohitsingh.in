@@ -5,7 +5,7 @@ date: '2021-09-04'
 excerpt: In my post about building building link-shortener, I discussed about how I attempted to build a fully functional link shortener. That worked well but I was left with several questions during my previous attempt.
 ---
 
-In my post about building [building link-shortener](/code/building-a-link-shortner), I discussed about how I attempted to build a fully functional link shortener. That worked well but I was left with several questions during my previous attempt &mdash;
+In my post about building [building link-shortener](/building-a-link-shortner), I discussed about how I attempted to build a fully functional link shortener. That worked well but I was left with several questions during my previous attempt &mdash;
 
 - I never finished the dashboard despite of entire system being ready. With so many open source visualization tools ^[like metabase, superset, redash etc], do I really need to build a custom dashboard ?
 - It was hard to scale and was still prone to collisions. Is there any way to have a faster but complete collision free system ?
