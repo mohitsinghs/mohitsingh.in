@@ -2,7 +2,7 @@ import Header from '@/components/home/Header'
 import Layout from '@/components/Layout'
 import { getAllPosts } from 'lib/page'
 import Link from 'next/link'
-import { ChevronRight } from 'react-feather'
+import { Calendar, Clock } from 'react-feather'
 
 export default function IndexPage({ posts }) {
   return (
@@ -14,22 +14,22 @@ export default function IndexPage({ posts }) {
               className='flex flex-col w-full p-4 cursor-pointer'
               key={post.title}
             >
-              <h2 className='mb-2 text-lg font-extrabold text-gray-600 md:text-2xl'>
+              <h2 className='mb-2 text-2xl font-extrabold likely-red'>
                 {post.title}
               </h2>
-              <p className='mb-2 text-sm font-medium text-gray-600 md:text-xs'>
-                {new Date(post.date).toDateString()}
-              </p>
               <p className='text-sm leading-loose text-gray-600'>
                 {post.excerpt}
               </p>
-              <a
-                className='self-end px-4 py-2 mt-4 text-sm font-medium text-gray-600 cursor-pointer select-none max-w-max hover:text-gray-700'
-                href={post.link}
-              >
-                Continue Reading
-                <ChevronRight className='inline w-auto h-4 ml-2' size={16} />
-              </a>
+              <p className='mt-2 text-sm font-medium text-gray-600 md:text-xs'>
+                <span className='mr-2'>
+                  <Calendar size={14} className='inline mr-1' />
+                  {new Date(post.date).toDateString()}
+                </span>
+                <span className='ml-2'>
+                  <Clock size={14} className='inline mr-1' />
+                  {post.time}
+                </span>
+              </p>
             </li>
           </Link>
         ))}

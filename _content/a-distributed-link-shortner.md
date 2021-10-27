@@ -7,7 +7,7 @@ excerpt: In my post about building building link-shortener, I discussed about ho
 
 In my post about building [building link-shortener](/building-a-link-shortner), I discussed about how I attempted to build a fully functional link shortener. That worked well but I was left with several questions during my previous attempt &mdash;
 
-- I never finished the dashboard despite of entire system being ready. With so many open source visualization tools ^[like metabase, superset, redash etc], do I really need to build a custom dashboard ?
+- I never finished the dashboard despite of entire system being ready. With so many open source visualization tools [^1], do I really need to build a custom dashboard ?
 - It was hard to scale and was still prone to collisions. Is there any way to have a faster but complete collision free system ?
 - Bloom-Filters did a good job, but is it a good generate IDs at request time ?
 
@@ -53,3 +53,5 @@ The good is that this too scales horizontally, So all we need to is to grow mach
 ## Conclusion
 
 The code is [open source](https://github.com/mohitsinghs/wormholes), so you can always have a look but it's lacking pieces like k8s config at the time of writing. I am still curious what other ways are there to make this even more fast and reliable. I sticked to postgres and timescale but for huge traffic, I wonder how Cassandra, Scylla and Druid will perform compared to these. I learned a few memory and optimization techniques during this and witnessed my failures multiple times. Learning is a continuos process like workout. We can never expect to get done either.
+
+[^1]: like metabase, superset, redash etc

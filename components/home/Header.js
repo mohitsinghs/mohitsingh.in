@@ -1,12 +1,9 @@
-import useTyped from '@/hooks/useTyped'
-
 export default function Header() {
-  const el = useTyped()
   return (
-    <header className='flex flex-col items-center justify-center w-full py-16'>
-      <h1 className='py-2 text-4xl font-bold text-gray-700'>Mohit Singh</h1>
-      <p className='py-2 text-gray-600 whitespace-pre'>
-        <span ref={el}>A Human and Dreamer</span>
+    <header className='flex flex-col items-center justify-center w-full pt-16'>
+      <h1 className='py-4 text-5xl font-bold likely-red'>The Void</h1>
+      <p className='py-2 font-medium likely-red'>
+        <span>Blog of Mohit Singh</span>
       </p>
     </header>
   )

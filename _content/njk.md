@@ -9,7 +9,7 @@ In 2014, I decide to build static websites for others in need, voluntarily. I di
 
 ## From Jekyll to njk
 
-I decide to use Jekyll ^[A static site generator written in Ruby.] and built those websites with it. Jekyll has a templating/markup language named liquid. I got familiar with markdown, yaml and templating languages. It was working fine until one day, I decided to move to something else due to some limitations. Also, Jekyll required ruby along with ruby devkit which I really didn't like. I learned about gulp ^[A build tool written in javascript] and nunjucks, a templating language similar to liquid and decided to build old sites with these new tools. Node felt simple and easy to use.
+I decide to use Jekyll [^1] and built those websites with it. Jekyll has a templating/markup language named liquid. I got familiar with markdown, yaml and templating languages. It was working fine until one day, I decided to move to something else due to some limitations. Also, Jekyll required ruby along with ruby devkit which I really didn't like. I learned about gulp[^2] and nunjucks, a templating language similar to liquid and decided to build old sites with these new tools. Node felt simple and easy to use.
 
 After putting together a few gulp plugins to replicate Jekyll like structure, I was able to move away from Jekyll, but not completely. The plugin I used to render nunjucks needed 3 other plugins in order to support front-matter and external data. This didn't feel right to me. I forked original plugin and added markdown and front-matter support to it. It got some community adoption and I learned that same problem was with a lot of other plugin users. I was happy that I helped others.
 
@@ -17,10 +17,14 @@ Soon after, I abstracted away my gulp-config as a module and named it njk. It wa
 
 ## A tool mistreated
 
-Fast forwards to some years, I kept maintaining njk since I was building all my sites with it. It got some adoption but wasn't much popular. By now, I was good enough in React and with time, migrated those sites to Next. njk was in good shape and in maintainence mode at this point. A few months ago, during a random lookup, I landed in a project that used njk as dependency. I got curious how they used it. What I found next was shocking. They used njk just to have nunjucks as a dependency. My guess was that njk sounded official and some people downloaded it instead of nunjucks library. It worked since njk was depending on nunjucks.
+Fast forwards to some years, I kept maintaining njk since I was building all my sites with it. It got some adoption but wasn't much popular. By now, I was good enough in React and with time, migrated those sites to Next. njk was in good shape and in maintenance mode at this point. A few months ago, during a random lookup, I landed in a project that used njk as dependency. I got curious how they used it. What I found next was shocking. They used njk just to have nunjucks as a dependency. My guess was that njk sounded official and some people downloaded it instead of nunjucks library. It worked since njk was depending on nunjucks.
 
-A facepalm later, I decide to dig deeper. After looking into some dependent projects, I found that most of them had njk but they actually intended to use nunjucks directly. It was okay that njk wasn't much used, but finding out that most of existing users were misusers was hilarious. They intended bananas but ended up with a gorilla with bananas and the whole circus around it ^[nunjucks is way lighter than njk since former is a library and later is a command line tool for specific job]. For those who are curious about this tiny tool, [here](https://github.com/mohitsinghs/njk) it is.
+A facepalm later, I decide to dig deeper. After looking into some dependent projects, I found that most of them had njk but they actually intended to use nunjucks directly. It was okay that njk wasn't much used, but finding out that most of existing users were misusers was hilarious. They wanted bananas but ended up with a gorilla with bananas and the whole jungle around it[^3]. For those who are curious about this tiny tool, [here](https://github.com/mohitsinghs/njk) it is.
 
 ## Conclusion
 
 We are installing dependencies so mindlessly nowadays that something like this can happen frequently and I witnessed it in my previous job. I have no idea how to solve this and I've already stopped using that tool but if njk were a person, I can imagine him complaining - "They are doing weird thing with me".
+
+[^1]: A static site generator written in Ruby.
+[^2]: A build tool written in javascript
+[^3]: nunjucks is way lighter than njk since former is a library and later is a command line tool for specific job

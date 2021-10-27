@@ -1,6 +1,5 @@
 import Article from '@/components/post/Article'
 import { getPost, populateParams } from 'lib/page'
-import 'littlefoot/dist/littlefoot.css'
 
 export default function PostPage({ post }) {
   return <Article post={post} />

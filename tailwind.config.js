@@ -1,17 +1,13 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./components/**/*.js', './pages/**/*.js'],
-  darkMode: false,
+  content: ['./components/**/*.js', './pages/**/*.js'],
   theme: {
     extend: {
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        gray: colors.coolGray,
         code: {
           // one dark colors
           black: '#282c34',
@@ -31,8 +27,8 @@ module.exports = {
         DEFAULT: {
           css: {
             color: theme('colors.gray.600'),
-            h2: {
-              color: theme('colors.gray.700'),
+            'h2,h3,strong': {
+              color: theme('colors.gray.600'),
             },
             a: {
               color: theme('colors.gray.600'),
@@ -40,10 +36,11 @@ module.exports = {
             code: {
               color: theme('colors.code.white'),
               backgroundColor: theme('colors.code.black'),
-              padding: '0.125rem 0.5rem',
+              padding: '0 0.5rem',
               margin: '0 0.25rem',
               borderRadius: '0.25rem',
               fontWeight: '400',
+              lineHeight: '1.5',
               display: 'inline-block',
             },
             'code::before': {
