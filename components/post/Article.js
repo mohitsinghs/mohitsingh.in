@@ -16,7 +16,7 @@ export default function Article({ post }) {
       >
         <header className='w-full max-w-lg mx-auto mb-12 text-center md:w-2/3'>
           <h1
-            className='mb-3 text-4xl font-bold likely-red md:leading-tight md:text-5xl'
+            className='mb-3 text-4xl font-bold text-gray-700 md:leading-tight md:text-5xl'
             itemProp='headline'
             title={post.title}
           >
