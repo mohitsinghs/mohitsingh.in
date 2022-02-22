@@ -109,23 +109,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@pacote/get-style@^1.0.0", "@pacote/get-style@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@pacote/get-style/-/get-style-1.1.7.tgz#b02d146f8eb7593f4733fc515b7d6702a4975c27"
-  integrity sha512-TGg2mrHvLtQC/d9dPy/GpVDIdvCT1PfYvbjsOQR0nU8o4ofuPy4NHRsPDUYjZXXbpMC5uPK6N/yitHO0Pon/lA==
-
-"@pacote/pixels@^1.0.0":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@pacote/pixels/-/pixels-1.1.7.tgz#385e7f1a0a593cbb5690888f873b28a31f5808b8"
-  integrity sha512-yztATcpzvQR4Y1iflLKQybTc/pr31LfAUAX2y2EE+62nqf9Q2gir5fcnVSSDYcEIONHAQHN+Pbb/V95Pg/fi7Q==
-  dependencies:
-    "@pacote/get-style" "^1.1.7"
-
-"@pacote/throttle@^1.0.0":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@pacote/throttle/-/throttle-1.0.7.tgz#1967f2b56259d1bbaa2c8bcef47311a78b811cad"
-  integrity sha512-7iO/ehc4UFeBcdwRjS5gxJwB/SSbeCzrUVR+R0R2Dxxz96TE2KpKN32UdRuv/4WNc+oRgu1g0Jyq/+U6/mr01A==
-
 "@tailwindcss/typography@^0.5.2":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@tailwindcss/typography/-/typography-0.5.2.tgz#24b069dab24d7a2467d01aca0dd432cb4b29f0ee"
@@ -434,13 +417,6 @@ defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
   integrity sha1-yY2bzvdWdBiOEQlpFRGZ45sfppM=
-
-delegated-events@^1.0.10:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/delegated-events/-/delegated-events-1.1.2.tgz#741a4ba320718096fb8f7db4ddfaadcb0daa5986"
-  integrity sha512-PjEw4Z5mrvXimyf60HGqMJ3BMcqqWZpBqSDGnEMBdkAtF4P7ltoa6N+UJXhbMMUxPLYFtykCmRs6Ra8I8pwzPQ==
-  dependencies:
-    selector-set "^1.1.5"
 
 detective@^5.2.0:
   version "5.2.0"
@@ -817,16 +793,6 @@ lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
-
-littlefoot@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/littlefoot/-/littlefoot-3.4.1.tgz#f0bd43d2ba07ad9689ef4fe11fc844de2266816e"
-  integrity sha512-P5gVZCqRLWPn5WndTQT+bTiGtWv6cEuhTYjDaDAH2vwLvRIK4q2WoD10SuI8NytRKgGdR3vUIW2G7vLUHJR5jQ==
-  dependencies:
-    "@pacote/get-style" "^1.0.0"
-    "@pacote/pixels" "^1.0.0"
-    "@pacote/throttle" "^1.0.0"
-    delegated-events "^1.0.10"
 
 lodash.castarray@^4.4.0:
   version "4.4.0"
@@ -1751,11 +1717,6 @@ section-matter@^1.0.0:
   dependencies:
     extend-shallow "^2.0.1"
     kind-of "^6.0.0"
-
-selector-set@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/selector-set/-/selector-set-1.1.5.tgz#60c135aea482b6f46a2d95ad72058927690a8634"
-  integrity sha512-6SQw6yMew5iOZ8/cDHDEnJWRM4ot2mxP6szZyF5ptrBogw4AcS4EXRj/8BUfgAMwVfdL84qpModlBMOl2NVrsQ==
 
 source-map-js@^1.0.1, source-map-js@^1.0.2:
   version "1.0.2"

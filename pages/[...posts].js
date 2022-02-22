@@ -1,7 +1,6 @@
+import Article from '@/components/post/Article'
 import List from '@/components/post/List'
 import { getAllPosts, getPost, populateParams } from 'lib/page'
-import Article from '@/components/post/Article'
-import 'littlefoot/dist/littlefoot.css'
 
 export default function PostsPage({ title, posts, post }) {
   if (post) {
