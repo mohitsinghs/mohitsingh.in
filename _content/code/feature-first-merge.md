@@ -23,7 +23,7 @@ After, pulling some parts from other models and combining that with our custom d
 
 ### Working on a Feature
 
-Since we use jira, a branch should ideally contain the ticket name. The name will be `feat/[TEAM]-[TICKET-ID]-[FEATURE]`, So let's create a branch &mdash;
+Since we use jira, a branch should ideally contain the ticket name. The name will be `feat/[JIRA-ID]-[FEATURE]`, So let's create a branch &mdash;
 
 ```bash
 git switch -c team1-23-feature-x
@@ -35,7 +35,7 @@ Several commits later, we would like to test this, but there are already some pe
 git switch main
 # you can use whatever naming strategy you want,
 # but be consistent with it.
-git switch -c staging-april-5
+git switch -c staging-5
 ```
 
 Now that we have our staging branch, let's merge **feature-x** here.
@@ -81,7 +81,7 @@ If you've updated your feature branch with some commits, you can either recreate
 2. git rebase to that.
 
 ```bash
-git rebase <hash>~
+git rebase -i <hash>~
 ```
 
 3. Drop that commit and continue rebase.
