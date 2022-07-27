@@ -1,7 +1,7 @@
 ---
 title: Building a link shortener
 author: Mohit Singh
-date: '2021-07-26'
+date: '2022-07-27'
 excerpt: A while back, I was asked to write a link shortener for a startup. It took me a day to come up with a production ready version but I warned them about collisions and other possible limitations.
 ---
 
@@ -43,15 +43,67 @@ Now that my link creation speed was way higher than retrieval, I wanted to optim
 
 Since the real benefit of link shortener for businesses was to extract data and analyze traffic from these links. I decided to implement that too. I was already getting IP and User-Agent. All I needed was a user-agent parser and an IP info parser. I found [a good parser][ua] for user agents and used [GeoLite2][geolite2] from MaxMind to parse IP info. Since every click had info, I decided to implement a worker pool and sent data there for paring and batch ingestion to avoid request slowdowns.
 
-As I've interacted with almost every popular TimeSeries Database, I picked [Timescale][ts] since it was already PostgreSQL based and was fast enough. [^4]. The workers ingested events fine, and I had a good amount of data-points for every single click.
+I picked [Timescale][ts] since it was already PostgreSQL based and was fast enough. [^4]. The workers ingested events fine, and I had a good amount of data-points for every single click.
 
-## Going crazy
+## A crazy idea
 
-At some point, I thought about generating all IDs beforehand, randomizing them and using that to create links. No collisions at all. That could be stored in a few GB. I had some other crazy ideas, but I avoided them for now.
+At some point, I thought about generating all IDs beforehand, randomizing them and using that to create links. No collisions at all. That could be stored in a few GB.
+
+## Making it somewhat distributed
+
+So far, the system worked fine but then I had some new questions &mdash;
+
+- It was still hard to scale and prone to collisions. Can we build a faster but complete collision free system ?
+- Bloom-Filters did a good job, but is it a good generate IDs at request time ?
+- What if I want to scale a specific portion.
+
+## Breaking into pieces
+
+After some thinking and punching through walls, I came with a seemingly distributed architecture which had three services &mdash;
+
+- **Generator** - Generates IDs and pass them to those who request.
+- **Director** - Directs to correct links and passes information to Timescale.
+- **Creator** - Handles creation and other modifications of short links.
+
+I started implementation of each.
+
+### Generator
+
+The one took longer than I expected. It further contains several pieces &mdash;
+
+- **Bucket** - A custom data-structure which contains a two dimensional slice for holding IDs, one for number of buckets and other for capacity and a synchronized map to keep record of bucket states.
+- **Bloom** - A thread-safe wrapper around bloom-filter.
+- **Factory** - The primary pieces which exposes gRPC method to retrieve one bucket full of IDs at time and fills buckets as they get empty
+
+Now, this service keeps generating IDs as we request more IDs from It. This way, we always end up with enough pre-generated IDs with no collisions.
+
+To scale it, we can make our bloom-filters distributed and use gRPC for its operations, but for now it works well even for generating millions of IDs in my limited testing.
+
+### Creator
+
+For this one, most of the old got reused to build this. Although, I had to introduce several new pieces to make it horizontally scalable &mdash;
+
+- **Ingestor** handles batch insertion of created links based on a limited and a timed fallback.
+- **Reserve** keeps a bucket full of IDs and when a bucket gets empty, it calls the generator to request new bucket through gRPC.
+
+With a request handler combined with this, I fired `wrk` only to find that I had several collisions. I suspected that my slice operation on bucket was concurrent causing it to return duplicate IDs. A mutex later, it was fixed and then came another issue. Several IDs were failing to generate. It was easy to spot as the number of failed requests was same as no of requested bucket. I added some delay in main request when bucket was requested. Now, every request was processed without failure.
+
+The system was able to create 7-8 Million links during several one minute tests. It was a huge improvement over my previous attempt which could only generate around 2-3 Million links in a minute with same resource usage. Added benefit with this is that I can scale this service horizontally along with some database replication.
+
+### Director
+
+Director was rather simple since it was already independent of rest of the system. All I had to do was to decouple it from old code. After adding redis as caching layer over postgres I was able to double request handling. I excepted better but perhaps running everything on a single system for wasn't a good idea for this test. The good part is that this too scales horizontally.
 
 ## Conclusion
 
-I named this after **Wormholes**, the imaginary links between two distant points in space. This system is still not finished. More databases can be supported, and analytics data can be rendered beautifully to make this a production ready and reliable system, but I'm already building something else and will come back to this later.
+I named this after **Wormholes**, the imaginary links between two distant points in space. The code is [open source](https://github.com/mohitsinghs/wormholes), so you can always have a look. I learned a few memory and optimization techniques during this and witnessed my failures multiple times. Learning is a continuous process like workout. We can never expect to get done either.
+
+I'm still left with some questions &mdash;
+
+- Can we deploy it to k8s ?
+- What other ways are there to make this even more fast and reliable ?
+- How Cassandra, Scylla and Druid will perform compared to current database choices ?
+- Should we use tools like Metabase, Superset, Redash etc to visualize, or a custom dashboard with auth will work better ?
 
 [nanoid]: https://github.com/ai/nanoid
 [fiber]: https://github.com/gofiber/fiber
@@ -70,4 +122,4 @@ I named this after **Wormholes**, the imaginary links between two distant points
 [^1]: A database that I try to avoid
 [^2]: Which I guess how they solved it too. Not sure if they still do the same
 [^3]: Since, just bumping `max_connections` doesn't work. I used [PGTune][pgtune] to generate config for 3000 connections.
-[^4]: I admit there were better choices and [Druid][druid] is my favorite, but this was a self-contained system and not a cluster-mess [Druid][druid] is and because I wanted to use [Timescale][ts]
+[^4]: I admit there were better choices and [Druid][druid] is one of my favorites, but that's a pain to maintain.
