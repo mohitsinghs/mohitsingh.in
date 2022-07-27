@@ -1,9 +1,9 @@
 export default function Header() {
   return (
-    <header className='flex flex-col items-center justify-center w-full pt-16'>
-      <h1 className='py-4 text-5xl font-bold text-gray-700'>The Void</h1>
+    <header className='flex flex-col justify-center items-center pt-16 w-full'>
+      <h1 className='py-4 text-5xl font-bold text-gray-700'>Mohit Singh</h1>
       <p className='py-2 font-medium text-gray-700'>
-        <span>Blog of Mohit Singh</span>
+        <span>A human and dreamer, eccentric programmer</span>
       </p>
     </header>
   )

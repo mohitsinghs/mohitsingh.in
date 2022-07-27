@@ -3,8 +3,8 @@ import Head from 'next/head'
 
 export default function Layout({
   children,
-  title = 'The Void | Blog of Mohit Singh',
-  description = 'Mohit Singh is a Software Engineer, Open Sourcerer, Physics Enthusiast and Fitness Freak',
+  title = 'Mohit Singh',
+  description = 'Digital home of an eccentric programmer who also explores a lot of other unrelated fields.',
   url = '',
   home = false,
   header,
@@ -32,9 +32,9 @@ export default function Layout({
         </Head>
         {children}
       </main>
-      <footer className='w-full py-4 text-center'>
+      <footer className='py-4 w-full text-center'>
         <p className='text-xs text-gray-700'>
-          Copyright &copy; 2021 Mohit Singh
+          Copyright &copy; {new Date().getFullYear()} Mohit Singh
         </p>
       </footer>
     </>
