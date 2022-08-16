@@ -5,12 +5,17 @@ import { postsForHome } from 'lib/page'
 
 export default function IndexPage({ posts }) {
   return (
-    <Layout home header={<Header />}>
+    <Layout home>
+      <Header />
       {Object.keys(posts).map((postType) => (
         <Section name={postType} key={postType}>
-          {posts[postType]?.map((post) => (
-            <Section.Card key={post.title} post={post} />
-          ))}
+          {posts[postType]?.map((post) =>
+            postType === 'Poetry' ? (
+              <Section.Card.Hi key={post.title} post={post} />
+            ) : (
+              <Section.Card key={post.title} post={post} />
+            )
+          )}
         </Section>
       ))}
     </Layout>

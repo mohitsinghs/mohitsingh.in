@@ -2,7 +2,14 @@ import Article from '@/components/post/Article'
 import List from '@/components/post/List'
 import { getAllPosts, getPost, populateParams } from 'lib/page'
 
-export default function PostsPage({ title, posts, post }) {
+export default function PostsPage({ title, posts, post, category }) {
+  if (category === 'poetry') {
+    if (post) {
+      return <Article.Hi post={post} />
+    } else {
+      return <List.Hi title={title} posts={posts} />
+    }
+  }
   if (post) {
     return <Article post={post} />
   } else {
@@ -19,6 +26,7 @@ export async function getStaticProps({ params }) {
       title,
       posts,
       post,
+      category,
     },
   }
 }

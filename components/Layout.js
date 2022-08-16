@@ -7,11 +7,9 @@ export default function Layout({
   description = 'Digital home of an eccentric programmer who also explores a lot of other unrelated fields.',
   url = '',
   home = false,
-  header,
 }) {
   return (
     <>
-      {header && header}
       <main
         className={clsx([!home && 'flex flex-col', 'flex-grow flex-shrink-0'])}
       >

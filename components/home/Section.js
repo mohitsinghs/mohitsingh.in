@@ -4,11 +4,11 @@ import Card from './Card'
 
 function Section({ name, children }) {
   return (
-    <section className='flex flex-col w-full max-w-5xl px-4 py-4 mx-auto'>
+    <section className='flex flex-col px-4 py-4 mx-auto w-full max-w-5xl'>
       <h2 className='py-4 text-xl font-bold tracking-wide text-gray-600'>
         {name}
       </h2>
-      <ul className='grid grid-flow-row gap-4 md:grid-flow-col auto-rows-fr'>
+      <ul className='grid grid-flow-row auto-rows-fr gap-8 md:grid-flow-col'>
         {children}
       </ul>
       <Link href={`/${name.toLowerCase()}`}>
