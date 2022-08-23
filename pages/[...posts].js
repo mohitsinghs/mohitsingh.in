@@ -5,9 +5,9 @@ import { getAllPosts, getPost, populateParams } from 'lib/page'
 export default function PostsPage({ title, posts, post, category }) {
   if (category === 'poetry') {
     if (post) {
-      return <Article.Hi post={post} />
+      return <Article.Poetry post={post} />
     } else {
-      return <List.Hi title={title} posts={posts} />
+      return <List.Poetry title={title} posts={posts} />
     }
   }
   if (post) {

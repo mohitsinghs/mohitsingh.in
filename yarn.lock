@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@fontsource/kalam@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/kalam/-/kalam-4.5.9.tgz#12ca31cb7d68a07bd33fa672fe1a528fd8f23068"
+  integrity sha512-9gsrPS7oSFK67zAyUVKGaH8FnT7vVB9a2QL4zHP6RtpfVSbnLRf96h7eVqh6rcf+UCB5JL/dzyLRlShTjrEvTg==
+
 "@fontsource/poppins@^4.5.8":
   version "4.5.8"
   resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.5.8.tgz#65ce9b32f31bda5a25c23001bcebf1c66e440320"

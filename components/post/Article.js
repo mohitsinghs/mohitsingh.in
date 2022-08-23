@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout'
 import { Clock, User } from 'react-feather'
 
-function Hi({ post }) {
+function Poetry({ post }) {
   return (
     <Layout
       title={`${post.title} | Mohit Singh`}
@@ -9,7 +9,7 @@ function Hi({ post }) {
       url={post.link}
     >
       <article
-        className='px-4 py-24 w-full'
+        className='px-4 py-24 w-full font-hi'
         itemID='#'
         itemScope
         itemType='http://schema.org/BlogPosting'
@@ -88,6 +88,6 @@ function Article({ post }) {
   )
 }
 
-Article.Hi = Hi
+Article.Poetry = Poetry
 
 export default Article

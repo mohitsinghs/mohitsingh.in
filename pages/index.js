@@ -1,3 +1,4 @@
+import { SimpleCard, TitleCard } from '@/components/card'
 import Header from '@/components/home/Header'
 import Section from '@/components/home/Section'
 import Layout from '@/components/Layout'
@@ -11,9 +12,9 @@ export default function IndexPage({ posts }) {
         <Section name={postType} key={postType}>
           {posts[postType]?.map((post) =>
             postType === 'Poetry' ? (
-              <Section.Card.Hi key={post.title} post={post} />
+              <TitleCard key={post.title} title={post.title} link={post.link} />
             ) : (
-              <Section.Card key={post.title} post={post} />
+              <SimpleCard key={post.title} {...post} />
             )
           )}
         </Section>

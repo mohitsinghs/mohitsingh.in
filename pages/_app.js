@@ -1,3 +1,4 @@
+import '@fontsource/kalam/devanagari.css'
 import '@fontsource/poppins/latin.css'
 import Head from 'next/head'
 import '../styles/index.css'
