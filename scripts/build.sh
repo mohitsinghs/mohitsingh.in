@@ -19,9 +19,6 @@ echo -n "# *
 User-agent: *
 Allow: /
 
-# Host
-Host: https://$SITE_URL
-
 # Sitemaps
 Sitemap: https://$SITE_URL/sitemap.xml
 " >"$OUT_DIR/robots.txt"
