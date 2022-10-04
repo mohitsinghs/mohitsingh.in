@@ -2,7 +2,7 @@
 title: Building a link shortener
 author: Mohit Singh
 date: '2022-07-27'
-excerpt: A while back, I was asked to write a link shortener for a startup. It took me a day to come up with a production ready version but I warned them about collisions and other possible limitations.
+excerpt: Journey from a tiny link shortener in Node to a performant and scalable link shortener in Go.
 ---
 
 A while back, I was asked to write a link shortener for a startup. It took me a day to come up with a production ready version, but I warned them about collisions and other possible limitations. I used [nanoid][nanoid] to generate IDs. They asked me to use Mongo along with Express, and I did so. Not the best choice due to limited opportunity of optimizations.

@@ -1,8 +1,8 @@
 ---
 title: The unemployed programmer
 author: Mohit Singh
-excerpt: In India, the country where I live, cheating and bribery is part of the normal life. India produces world's largest number of CS graduates each year, 90% of them are useless
-date: "2022-09-30"
+excerpt: Experiences of an unemployed programmer from a republic of broken systems and broken people.
+date: '2022-09-30'
 ---
 
 In India, the country where I live, cheating and bribery is part of the normal life. [India produces world's largest number of CS graduates each year, 90% of them are useless][1]. What do you expect from a population of computer programmers that can't code but want to earn money, specially in a country where cheating is a social norm ? Well, they will do everything in their capacity to cheat and earn. India is also know of it's brilliant minds. So, those who are genuinely interested in coding are extremely good at it, but being good alone is not something that will land you a job.

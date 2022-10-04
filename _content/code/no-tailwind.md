@@ -2,7 +2,7 @@
 title: Not The Tailwind Way
 author: Mohit Singh
 date: '2021-07-25'
-excerpt: I love Tailwind and it solves a lot of pain points I had writing CSS. The problem is, it pollutes my HTML well beyond refactoring and I've to be lucky to get something broken fixed.
+excerpt: A small bug chasing story about how I jumped into the tailwindcss source code and returned.
 ---
 
 I love Tailwind, and it solves a lot of pain points I had writing CSS. The problem is, it pollutes my HTML well beyond refactoring, and I've to be lucky to get something broken fixed.
@@ -29,7 +29,9 @@ export default function parseAnimationValue(input) {
 
 According to the declaration, for combined animation, it returns an `js-->Array` of animation `js-->Object`. So, I tried fixing it, which took a few minutes, and created a pull request with tests.
 
-At this point, I was hoping that in the worst case, I'll get some kind of feedback on how impractical my solution was. After a week, my pull request was still in black hole. So, I simply closed it thinking maybe they don't care, and since my animations were defined in CSS by now. I moved on with life.
+At this point, I was hoping that in the worst case, I'll get some kind of feedback on how impractical my solution was. After a week, my pull request was still in black hole. So, I simply closed it thinking maybe they don't care. Since my animations were defined in CSS by now, I moved on with life.
+
+> My golden rule of open source interaction is, "Empathy and time are rare and they can't be expected from everyone every time, no matter how good they are at what they do."
 
 ## Broken syntax highlighting
 

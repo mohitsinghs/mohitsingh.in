@@ -2,7 +2,7 @@
 title: Feature first merges
 author: Mohit Singh
 date: '2022-04-05'
-excerpt: What branching model will you follow when people work on multiple features, a combination of them need to be tested and any feature can be prioritized or de-prioritized anytime.
+excerpt: A hybrid git branching model that enables small teams to work on multiple features in different environments and with different priorities.
 ---
 
 What branching model will you follow when people work on multiple features, a combination of them need to be tested and any feature can be prioritized or de-prioritized anytime. At an organization I worked for, we were facing similar challenges. This post is about a solution that was adopted to solve this.

@@ -2,7 +2,7 @@
 title: Story of njk, a tool mistreated
 author: Mohit Singh
 date: '2021-08-07'
-excerpt: In 2014, I decide to build static websites for others in need, voluntarily. I didn't know much about web technologies but after a little research, I found that static-site-generators were a thing.
+excerpt: The story of an open source tool that became one of mindlessly installed dependencies on npm.
 ---
 
 In 2014, I decide to build static websites for others in need, voluntarily. I didn't know much about web technologies but after a little research (googling ?) I found that static-site-generators were a thing. I spent next few months teaching myself web stuff. Next, I was looking for a good static site generator to utilize this newly gained knowledge.
@@ -23,7 +23,7 @@ A facepalm later, I decide to dig deeper. After looking into some dependent proj
 
 ## Conclusion
 
-We are installing dependencies so mindlessly nowadays that something like this can happen frequently and I witnessed it in my previous job. I have no idea how to solve this and I've already stopped using that tool but if njk were a person, I can imagine him complaining - "They are doing weird thing with me".
+We are installing dependencies so mindlessly nowadays that something like this can happen frequently and I witnessed it in my previous job. I have no idea how to solve this and I've already stopped using that tool but it still feels weird that a tool that served so well for me ends up in dependencies this way.
 
 [^1]: A static site generator written in Ruby.
 [^2]: A build tool written in javascript

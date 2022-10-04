@@ -1,7 +1,7 @@
 ---
 title: Religions as I know
 author: Mohit Singh
-excerpt: We are curious creatures. We are never satisfied with what we perceive. We explore and experiment with things we don't understand.
+excerpt: A speculation on the origin of religions, one of the most controversial concepts of human history.
 date: '2020-01-05'
 ---
 
