@@ -23,7 +23,7 @@ Later, I decided to write an open source link shortener. I picked [Fiber][fiber]
 
 Database lookup before creating every link was problematic. I decided to fix it first. After some digging, I came across [Probabilistic Data Structures][pds]. The possible candidates were [Bloom Filters][bf], [Cuckoo Filters][cf] and [Quotient Filters][qf]. After some testing and thinking, I picked [Bloom Filters][bf].
 
-When I was looking for implementations, I found out that **Bitly** had [one old implementation][dablooms] in their GitHub repo[^2]. I used [bloom][bloom] after writing a thread-safe wrapper around it. By using that to lookup before generating IDs, the lookup time reduced significantly.
+I used [bloom][bloom] after writing a thread-safe wrapper around it. By using that to lookup before generating IDs, the lookup time reduced significantly.
 
 ## Minimizing failures
 
@@ -37,13 +37,13 @@ Since I was no longer using the database for checking the existence of an ID, th
 
 ## Increasing retrieval speed
 
-Now that my link creation speed was way higher than retrieval, I wanted to optimize retrieval too, but I was limited by db connections. I tuned my PostgreSQL instance to have around 3000 connections[^3]. This worked, but retrieval wasn't that fast. It still isn't, but the possible solution is to put these ID link pairs in Redis and use that. The insertion can be done on startup ( Any better ideas ? ).
+Now that my link creation speed was way higher than retrieval, I wanted to optimize retrieval too, but I was limited by db connections. I tuned my PostgreSQL instance to have around 3000 connections[^2]. This worked, but retrieval wasn't that fast. It still isn't, but the possible solution is to put these ID link pairs in Redis and use that. The insertion can be done on startup ( Any better ideas ? ).
 
 ## Adding analytics
 
 Since the real benefit of link shortener for businesses was to extract data and analyze traffic from these links. I decided to implement that too. I was already getting IP and User-Agent. All I needed was a user-agent parser and an IP info parser. I found [a good parser][ua] for user agents and used [GeoLite2][geolite2] from MaxMind to parse IP info. Since every click had info, I decided to implement a worker pool and sent data there for paring and batch ingestion to avoid request slowdowns.
 
-I picked [Timescale][ts] since it was already PostgreSQL based and was fast enough. [^4]. The workers ingested events fine, and I had a good amount of data-points for every single click.
+I picked [Timescale][ts] since it was already PostgreSQL based and was fast enough. [^3]. The workers ingested events fine, and I had a good amount of data-points for every single click.
 
 ## A crazy idea
 
@@ -120,6 +120,5 @@ I'm still left with some questions &mdash;
 [druid]: https://github.com/apache/druid
 
 [^1]: A database that I try to avoid
-[^2]: Which I guess how they solved it too. Not sure if they still do the same
-[^3]: Since, just bumping `max_connections` doesn't work. I used [PGTune][pgtune] to generate config for 3000 connections.
-[^4]: I admit there were better choices and [Druid][druid] is one of my favorites, but that's a pain to maintain.
+[^2]: Since, just bumping `max_connections` doesn't work. I used [PGTune][pgtune] to generate config for 3000 connections.
+[^3]: I admit there were better choices and [Druid][druid] is one of my favorites, but that's a pain to maintain.
