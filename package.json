@@ -12,30 +12,30 @@
     "start": "next start"
   },
   "dependencies": {
-    "@fontsource/kalam": "^4.5.9",
-    "@fontsource/poppins": "^4.5.8",
-    "@headlessui/react": "^1.6.6",
+    "@fontsource/kalam": "^4.5.10",
+    "@fontsource/poppins": "^4.5.10",
+    "@headlessui/react": "^1.7.3",
     "clsx": "^1.2.1",
-    "next": "12.2.3",
+    "next": "12.3.1",
     "react": "^18.2.0",
-    "react-bootstrap-icons": "^1.8.4",
+    "react-bootstrap-icons": "^1.9.1",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.4",
-    "autoprefixer": "^10.4.8",
+    "@tailwindcss/typography": "^0.5.7",
+    "autoprefixer": "^10.4.12",
     "gray-matter": "^4.0.3",
-    "postcss": "^8.4.14",
-    "postcss-import": "^14.1.0",
-    "prismjs": "^1.28.0",
+    "postcss": "^8.4.18",
+    "postcss-import": "^15.0.0",
+    "prismjs": "^1.29.0",
     "reading-time": "^1.5.0",
     "remark": "^14.0.2",
     "remark-external-links": "^9.0.1",
     "remark-gfm": "^3.0.1",
     "remark-html": "^15.0.1",
-    "tailwindcss": "^3.1.7"
+    "tailwindcss": "^3.1.8"
   },
   "browserslist": {
     "production": [
