@@ -5,7 +5,7 @@ export default function Header() {
     <header className='flex flex-col items-center py-16 w-full'>
       <h1 className='text-4xl font-bold text-slate-800 md:text-5xl'>
         <motion.span
-          initial={{ y: -100, rotate: 0, opacity: 0 }}
+          initial={{ y: 100, rotate: 0, opacity: 0 }}
           whileInView={{
             y: 0,
             rotate: -6,

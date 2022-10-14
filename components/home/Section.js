@@ -4,7 +4,7 @@ import { ChevronRight } from 'react-feather'
 function Section({ name, children }) {
   return (
     <section className='flex flex-col px-4 py-4 mx-auto w-full max-w-5xl'>
-      <h2 className='py-4 text-2xl font-bold tracking-wide text-gray-600'>
+      <h2 className='py-8 text-3xl text-center leading-loose font-bold tracking-wide text-gray-600'>
         {name}
       </h2>
       <ul className='grid grid-flow-row auto-rows-fr gap-8 md:grid-flow-col'>

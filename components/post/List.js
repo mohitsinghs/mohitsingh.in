@@ -18,8 +18,15 @@ function Poetry({ title, posts }) {
       header={<ListHeader title={title} />}
     >
       <ul className='grid grid-cols-1 gap-4 m-8 mx-auto w-4/5 md:grid-cols-2 lg:grid-cols-3'>
-        {posts.map((post) => (
-          <TitleCard key={post.title} link={post.link} title={post.title} />
+        {posts.map((post, i) => (
+          <TitleCard
+            key={post.title}
+            link={post.link}
+            title={post.title}
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          />
         ))}
       </ul>
     </Layout>
@@ -35,8 +42,14 @@ function List({ title, posts }) {
       header={<ListHeader title={title} />}
     >
       <ul className='grid grid-cols-1 gap-8 mx-auto w-4/5 md:grid-cols-2 xl:grid-cols-3'>
-        {posts.map((post) => (
-          <SimpleCard key={post.title} {...post} />
+        {posts.map((post, i) => (
+          <SimpleCard
+            key={post.title}
+            {...post}
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          />
         ))}
       </ul>
     </Layout>

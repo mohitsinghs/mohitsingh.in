@@ -1,10 +1,25 @@
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Calendar, ChevronRight, Clock } from 'react-feather'
 
-export function SimpleCard({ link, title, date, time, excerpt }) {
+export function SimpleCard({
+  link,
+  title,
+  date,
+  time,
+  excerpt,
+  initial,
+  whileInView,
+  transition,
+}) {
   return (
     <Link href={link}>
-      <li className='flex flex-col p-4 w-full cursor-pointer'>
+      <motion.li
+        className='flex flex-col p-4 w-full cursor-pointer'
+        initial={initial}
+        whileInView={whileInView}
+        transition={transition}
+      >
         <h3 className='mb-2 text-xl font-bold text-gray-600'>{title}</h3>
         {date && (
           <p className='mb-2 text-sm font-medium text-gray-600 md:text-xs'>
@@ -30,7 +45,7 @@ export function SimpleCard({ link, title, date, time, excerpt }) {
           Continue Reading
           <ChevronRight className='inline ml-2 w-auto h-4' size={16} />
         </a>
-      </li>
+      </motion.li>
     </Link>
   )
 }
