@@ -4,7 +4,7 @@ import { SimpleCard, TitleCard } from '../card'
 function ListHeader({ title }) {
   return (
     <header className='my-16 w-full'>
-      <h1 className='text-4xl font-bold text-center text-gray-600'>{title}</h1>
+      <h1 className='text-4xl font-bold text-center text-slate-600'>{title}</h1>
     </header>
   )
 }

@@ -16,7 +16,7 @@ function Poetry({ post }) {
       >
         <header className='mx-auto mb-12 w-full max-w-lg text-center md:w-2/3'>
           <h1
-            className='mb-3 text-4xl font-bold text-gray-700 md:leading-tight md:text-5xl'
+            className='mb-3 text-4xl font-bold text-slate-700 md:leading-tight md:text-5xl'
             itemProp='headline'
             title={post.title}
           >
@@ -48,13 +48,13 @@ function Article({ post }) {
       >
         <header className='mx-auto mb-12 w-full max-w-lg text-center md:w-2/3'>
           <h1
-            className='mb-3 text-4xl font-bold text-gray-700 md:leading-tight md:text-5xl'
+            className='mb-3 text-4xl font-bold text-slate-700 md:leading-tight md:text-5xl'
             itemProp='headline'
             title={post.title}
           >
             {post.title}
           </h1>
-          <p className='text-sm text-gray-600 md:text-xs'>
+          <p className='text-sm text-slate-600 md:text-xs'>
             <User size={12} className='inline mr-1' />
             <span
               className='font-medium'

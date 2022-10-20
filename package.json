@@ -1,10 +1,10 @@
 {
-  "name": "mohitsinghs.github.io",
+  "name": "mohitsingh.in",
   "version": "1.0.0",
   "description": "Personal website and portfolio",
   "license": "UNLICENSED",
   "author": "Mohit Singh <mohit@mohitsingh.in> (https://mohitsingh.in/)",
-  "repository": "mohitsinghs/mohitsings.github.io",
+  "repository": "mohitsinghs/mohitsings.in",
   "homepage": "https://mohitsingh.in",
   "scripts": {
     "dev": "next",

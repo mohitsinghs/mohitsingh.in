@@ -17,7 +17,7 @@ export default function Header() {
             damping: 5,
             stiffness: 50,
           }}
-          className='relative bg-slate-800 px-4 py-2.5 rounded-xl text-gray-100 inline-block'
+          className='relative bg-slate-800 px-4 py-2.5 rounded-xl text-slate-100 inline-block'
         >
           <span className='absolute bg-slate-800 top-0 left-16 -mt-60 w-1 rotate-6 h-64' />
           Mohit

@@ -20,9 +20,9 @@ export function SimpleCard({
         whileInView={whileInView}
         transition={transition}
       >
-        <h3 className='mb-2 text-xl font-bold text-gray-600'>{title}</h3>
+        <h3 className='mb-2 text-xl font-bold text-slate-600'>{title}</h3>
         {date && (
-          <p className='mb-2 text-sm font-medium text-gray-600 md:text-xs'>
+          <p className='mb-2 text-sm font-medium text-slate-600 md:text-xs'>
             <span className='mr-2'>
               <Calendar size={14} className='inline mr-1' />
               {new Date(date).toDateString()}
@@ -34,12 +34,12 @@ export function SimpleCard({
           </p>
         )}
         {excerpt && (
-          <p className='flex-grow flex-shrink-0 text-sm leading-loose text-gray-600'>
+          <p className='flex-grow flex-shrink-0 text-sm leading-loose text-slate-600'>
             {excerpt}
           </p>
         )}
         <a
-          className='self-end px-4 py-2 mt-4 max-w-max text-sm font-medium text-gray-600 cursor-pointer select-none hover:text-gray-700'
+          className='self-end px-4 py-2 mt-4 max-w-max text-sm font-medium text-slate-600 cursor-pointer select-none hover:text-slate-700'
           href={link}
         >
           Continue Reading
