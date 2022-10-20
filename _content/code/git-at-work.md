@@ -5,7 +5,7 @@ date: '2022-10-10'
 excerpt: Techniques that I use to isolate working environments of git from my personal setup from work.
 ---
 
-Isolate git and other configurations for work and personal projects can be complicated. In this post, I'll be sharing the way I isolate my work development environment from my personal one.
+Isolating git and other configurations for work and personal projects can be complicated. In this post, I'll be sharing the way I isolate my work development environment from my personal one.
 
 ## Setting up ssh
 
