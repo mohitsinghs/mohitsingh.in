@@ -1,6 +1,6 @@
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import { createRef } from 'react'
-import { ClipboardFill, Code, Terminal } from 'react-bootstrap-icons'
+import { ClipboardFill } from 'react-bootstrap-icons'
 
 const langs = {
   js: 'Javascript',
@@ -9,14 +9,8 @@ const langs = {
   properties: 'Properties',
 }
 
-const icons = {
-  default: Code,
-  sh: Terminal,
-}
-
 export function Fence({ children, language }) {
   const notifyRef = createRef()
-  const Icon = icons[language] || icons.default
 
   const copyToClipboard = async (e) => {
     if (navigator?.clipboard) {
@@ -38,10 +32,12 @@ export function Fence({ children, language }) {
       {({ className, style, tokens, getTokenProps, getLineProps }) => (
         <pre className={className} style={style}>
           <div className='toolbox'>
-            <p>
-              <Icon />
-              {langs[language]}
+            <p className='controls'>
+              <span className='close' />
+              <span className='min' />
+              <span className='max' />
             </p>
+            <p>{langs[language]}</p>
             <ClipboardFill size={12} onClick={copyToClipboard} />
           </div>
           <div className='notify hidden' ref={notifyRef}>

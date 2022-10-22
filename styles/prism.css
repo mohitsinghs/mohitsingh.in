@@ -1,6 +1,29 @@
+/* Toolbox */
+
+.toolbox {
+  @apply flex h-8 w-full items-center justify-between px-2 text-sm leading-none text-code-text;
+}
+
+.toolbox .controls {
+  @apply inline-flex;
+}
+.toolbox .controls span {
+  @apply h-2.5 w-2.5 rounded-full bg-code-white my-1.5 mx-1;
+}
+
+.toolbox > svg {
+  @apply cursor-pointer hover:text-code-white mx-2;
+}
+
+/* Decorations */
+
+code {
+  @apply bg-code-storm;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
-  @apply bg-code-black text-code-white;
+  @apply bg-code-storm text-code-white;
 }
 
 pre[class*='language-']::selection {
@@ -15,296 +38,89 @@ pre[class*='language-'] > code {
   @apply block overflow-x-auto px-4 py-2;
 }
 
-pre[class*='language-'] > .toolbox {
-  @apply flex h-8 w-full items-center justify-between bg-code-black border-b border-code-gray/25 px-4 text-sm leading-none text-code-gray;
-}
-
-pre[class*='language-'] > .toolbox p {
-  @apply m-0 inline-flex select-none items-center text-sm font-bold leading-none;
-}
-
-pre[class*='language-'] > .toolbox > svg {
-  @apply cursor-pointer hover:text-code-white;
-}
-
-pre[class*='language-'] > .toolbox p > svg {
-  @apply mr-2 inline h-4 w-4;
-}
-
 pre[class*='language-'] .notify {
-  @apply absolute bottom-4 right-4 rounded-md px-2.5 text-code-white;
+  @apply absolute bottom-4 right-4 rounded-md px-2.5 bg-code-term text-code-white;
 }
 
-/* Common */
-.token.comment {
-  @apply text-code-gray italic;
-}
-.token.string {
-  @apply text-code-green;
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+  @apply bg-code-selection;
 }
 
+@media print {
+  code[class*='language-'],
+  pre[class*='language-'] {
+  }
+}
+
+/* Syntax highlighting */
+
+.token.comment,
+.token.prolog,
 .token.doctype,
-.token.punctuation,
-.token.entity {
-  @apply text-code-white;
+.token.cdata {
+  @apply text-code-comment;
 }
 
+.token.property-access,
+.token.entity,
+.token.url,
 .token.attr-name,
-.token.class-name,
-.token.boolean,
-.token.constant,
-.token.number,
-.token.atrule {
-  @apply text-code-orange;
+.token.keyword.module,
+.token.selector {
+  @apply text-code-props;
 }
 
-.token.keyword {
-  @apply text-code-purple;
-}
-
-.token.property,
-.token.tag,
-.token.symbol,
-.token.deleted,
-.token.important {
-  @apply text-code-red;
-}
-
-.token.selector,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted,
-.token.regex,
-.token.attr-value,
-.token.attr-value > .token.punctuation {
+.token.property {
   @apply text-code-green;
 }
 
-.token.variable,
-.token.operator,
+.token.parameter {
+  @apply text-code-yellow;
+}
+
+.token.punctuation,
+.token.keyword,
+.token.operator {
+  @apply text-code-magenta;
+}
+
+.token.namespace {
+  @apply opacity-70;
+}
+
+.token.tag,
+.token.boolean,
+.token.number {
+  @apply text-code-constant;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.hex,
+.token.string {
+  @apply text-code-string;
+}
+
+.token.regex {
+  @apply text-code-regex;
+}
+
+.token.entity {
+  cursor: help;
+}
+
 .token.function {
   @apply text-code-blue;
 }
 
-.token.url {
-  @apply text-code-cyan;
-}
-
-/* HTML */
-.language-html .token.doctype-tag {
-  @apply text-code-red;
-}
-.language-html .token.name {
-  @apply text-code-orange;
-}
-.language-html .token.punctuation {
-  @apply text-code-white;
-}
-.language-html .token.tag .token.tag {
-  @apply text-code-red;
-}
-.language-html .token.tag .token.attr-name {
-  @apply text-code-orange;
-}
-.language-html .token.tag .token.attr-value {
-  @apply text-code-green;
-}
-.language-html .token.tag .token.attr-value .token.punctuation {
-  @apply text-code-green;
-}
-.language-html .token.tag .token.attr-value .token.punctuation.attr-equals {
+.token.variable {
   @apply text-code-white;
 }
 
-/* CSS */
-
-.language-css {
-  @apply text-code-orange;
-}
-
-.language-css .token.operator,
-.language-css .token.punctuation,
-.language-css .token.property,
-.language-css .token.operator,
-.language-css .token.combinator {
-  @apply text-code-white;
-}
-
-.language-css .token.attr-name,
-.language-css .token.color,
-.language-css .token.number,
-.language-css .token.class {
-  @apply text-code-orange;
-}
-
-.language-css .token.attr-value {
-  @apply text-code-green;
-}
-
-.language-css .token.selector,
-.language-css .token.unit {
+.token.important,
+.token.deliminator {
   @apply text-code-red;
-}
-
-.language-css .token.property.prefix,
-.language-css .token.pseudo-element,
-.language-css .token.pseudo-class {
-  @apply text-code-cyan;
-}
-
-.language-css .token.atrule {
-  @apply text-code-white;
-}
-
-.language-css .token.atrule .token.rule {
-  @apply text-code-purple;
-}
-
-/* Javascript */
-.language-js {
-  @apply text-code-yellow;
-}
-.language-js .token.punctuation {
-  @apply text-code-white;
-}
-.language-js .token.keyword.this,
-.language-js .token.dom.variable,
-.language-js .token.class-name {
-  @apply text-code-yellow;
-}
-.language-js .token.null,
-.language-js .token.boolean,
-.language-js .token.number {
-  @apply text-code-orange;
-}
-.language-js .token.property-access,
-.language-js .token.imports,
-.language-js .token.parameter {
-  @apply text-code-red;
-}
-.language-js .token.parameter {
-  @apply italic;
-}
-.language-js .token.keyword,
-.language-js .token.regex-flags,
-.language-js .token.interpolation-punctuation {
-  @apply text-code-purple;
-}
-.language-js .token.function,
-.language-js .token.property-access.function.method {
-  @apply text-code-blue;
-}
-.language-js .token.regex-source,
-.language-js .token.operator {
-  @apply text-code-cyan;
-}
-.language-js .token.regex-delimiter {
-  @apply text-code-green;
-}
-
-/* JSON */
-.language-json .token.punctuation,
-.language-json .token.operator {
-  @apply text-code-white;
-}
-.language-json .token.boolean,
-.language-json .token.number,
-.language-json .token.null.keyword {
-  @apply text-code-orange;
-}
-.language-json .token.property {
-  @apply text-code-red;
-}
-
-/* Shell */
-.language-bash .token.shebang.important,
-.language-shell .token.shebang.important {
-  @apply text-code-gray italic;
-}
-.language-bash .token.builtin.class-name,
-.language-bash .token.entity,
-.language-shell .token.builtin.class-name,
-.language-shell .token.entity {
-  @apply text-code-cyan;
-}
-.language-bash .token.keyword,
-.language-shell .token.keyword {
-  @apply text-code-purple;
-}
-.language-bash .token.variable,
-.language-shell .token.variable {
-  @apply text-code-red;
-}
-
-/* Python */
-.language-python .token.keyword,
-.language-py .token.keyword {
-  @apply text-code-purple italic;
-}
-.language-python .token.operator,
-.language-python .token.function,
-.language-py .token.operator,
-.language-py .token.function {
-  @apply text-code-cyan;
-}
-.language-python .token.number,
-.language-py .token.number {
-  @apply text-code-orange;
-}
-
-/* Go */
-.language-go {
-  @apply text-code-red;
-}
-.language-go .token.function {
-  @apply text-code-blue;
-}
-.language-go .token.keyword,
-.language-go .token.operator,
-.language-go .token.builtin {
-  @apply text-code-purple;
-}
-.language-go .token.number {
-  @apply text-code-orange;
-}
-.language-go .token.punctuation {
-  @apply text-code-white;
-}
-
-/* Rust */
-.language-rust {
-  @apply text-code-red;
-}
-.language-rust .token.char {
-  @apply text-code-green;
-}
-.language-rust .token.lifetime-annotation,
-.language-rust .token.namespace,
-.language-rust .token.type-definition,
-.language-rust .token.class-name {
-  @apply text-code-yellow;
-}
-.language-rust .token.function-definition,
-.language-rust .token.function,
-.language-rust .token.macro {
-  @apply text-code-blue;
-}
-.language-rust .token.punctuation,
-.language-rust .token.fragment-specifier,
-.language-rust .token.module-declaration,
-.language-rust .token.attribute {
-  @apply text-code-white;
-}
-.language-rust .token.number,
-.language-rust .token.boolean,
-.language-rust .token.constant {
-  @apply text-code-orange;
-}
-.language-rust .token.keyword {
-  @apply text-code-purple;
-}
-.language-rust .token.operator,
-.language-rust .token.closure-punctuation {
-  @apply text-code-cyan;
 }
