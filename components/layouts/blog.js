@@ -16,7 +16,7 @@ export default function BlogLayout({ children, title, description, toc }) {
           itemScope
           itemType='http://schema.org/BlogPosting'
         >
-          <section className='prose'>{children}</section>
+          <section className='prose min-w-0'>{children}</section>
           {toc?.length > 0 && (
             <aside className='sticky z-20 hidden xl:top-10 xl:block xl:self-start xl:shrink-0 xl:grow-0 xl:px-16'>
               <Toc toc={toc} />
