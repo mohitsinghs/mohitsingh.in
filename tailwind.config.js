@@ -5,8 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
-        hi: ['Kalam', ...defaultTheme.fontFamily.sans],
+        sans: ['Poppins', 'Kalam', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         code: {
@@ -34,15 +33,32 @@ module.exports = {
             a: {
               color: theme('colors.gray.600'),
             },
+            pre: {
+              paddingTop: 0,
+              paddingBottom: 0,
+              paddingRight: 0,
+              paddingLeft: 0,
+            },
+            blockquote: {
+              fontWeight: 'normal',
+              fontStyle: 'normal',
+              color: theme('colors.gray.500'),
+              borderLeftWidth: '0.25rem',
+              borderLeftColor: 'var(--tw-prose-quote-borders)',
+              quotes: '"\\201C""\\201D""\\2018""\\2019"',
+            },
+            'blockquote p:first-of-type::before': {
+              content: '',
+            },
+            'blockquote p:last-of-type::after': {
+              content: '',
+            },
             code: {
               color: theme('colors.code.white'),
               backgroundColor: theme('colors.code.black'),
-              padding: '0 0.5rem',
+              padding: '0.25rem 0.5rem',
               margin: '0 0.25rem',
-              borderRadius: '0.25rem',
-              fontWeight: '400',
-              lineHeight: '1.5',
-              display: 'inline-block',
+              fontWeight: '600',
             },
             'code::before': {
               content: '""',

@@ -1,37 +1,38 @@
-.highlight {
-  @apply relative;
-}
-
+code[class*='language-'],
 pre[class*='language-'] {
-  @apply pt-6 bg-code-black text-code-white;
-}
-
-pre[class*='language-']::before {
-  @apply absolute top-0 left-0 px-2 rounded-br rounded-tl text-sm;
+  @apply bg-code-black text-code-white;
 }
 
 pre[class*='language-']::selection {
   @apply bg-code-selection;
 }
 
-pre[class*='language-js']::before {
-  content: 'JS';
-  @apply bg-code-yellow text-code-black;
+pre[class*='language-'] {
+  @apply relative shadow-lg;
 }
 
-pre[class*='language-py']::before {
-  content: 'Python';
-  @apply bg-code-blue text-code-black;
+pre[class*='language-'] > code {
+  @apply block overflow-x-auto px-4 py-2;
 }
 
-pre[class*='language-go']::before {
-  content: 'Go';
-  @apply bg-code-cyan text-code-black;
+pre[class*='language-'] > .toolbox {
+  @apply flex h-8 w-full items-center justify-between bg-code-black border-b border-code-gray/25 px-4 text-sm leading-none text-code-gray;
 }
 
-pre[class*='language-bash']::before {
-  content: 'Bash';
-  @apply bg-code-orange text-code-black;
+pre[class*='language-'] > .toolbox p {
+  @apply m-0 inline-flex select-none items-center text-sm font-bold leading-none;
+}
+
+pre[class*='language-'] > .toolbox > svg {
+  @apply cursor-pointer hover:text-code-white;
+}
+
+pre[class*='language-'] > .toolbox p > svg {
+  @apply mr-2 inline h-4 w-4;
+}
+
+pre[class*='language-'] .notify {
+  @apply absolute bottom-4 right-4 rounded-md px-2.5 text-code-white;
 }
 
 /* Common */
@@ -40,6 +41,54 @@ pre[class*='language-bash']::before {
 }
 .token.string {
   @apply text-code-green;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.entity {
+  @apply text-code-white;
+}
+
+.token.attr-name,
+.token.class-name,
+.token.boolean,
+.token.constant,
+.token.number,
+.token.atrule {
+  @apply text-code-orange;
+}
+
+.token.keyword {
+  @apply text-code-purple;
+}
+
+.token.property,
+.token.tag,
+.token.symbol,
+.token.deleted,
+.token.important {
+  @apply text-code-red;
+}
+
+.token.selector,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.regex,
+.token.attr-value,
+.token.attr-value > .token.punctuation {
+  @apply text-code-green;
+}
+
+.token.variable,
+.token.operator,
+.token.function {
+  @apply text-code-blue;
+}
+
+.token.url {
+  @apply text-code-cyan;
 }
 
 /* HTML */

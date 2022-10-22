@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ChevronRight } from 'react-feather'
+import { ChevronRight } from 'react-bootstrap-icons'
 
 function Section({ name, children }) {
   return (
@@ -10,11 +10,12 @@ function Section({ name, children }) {
       <ul className='grid grid-flow-row auto-rows-fr gap-8 md:grid-flow-col'>
         {children}
       </ul>
-      <Link href={`/${name.toLowerCase()}`}>
-        <a className='flex items-center self-end mt-8 text-sm font-bold text-gray-600 cursor-pointer select-none hover:text-gray-700'>
-          Read More
-          <ChevronRight size={16} />
-        </a>
+      <Link
+        href={`/${name.toLowerCase()}`}
+        className='flex items-center self-end mt-8 text-sm font-bold text-gray-600 cursor-pointer select-none hover:text-gray-700'
+      >
+        Read More
+        <ChevronRight size={16} />
       </Link>
     </section>
   )

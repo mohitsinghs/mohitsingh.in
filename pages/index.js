@@ -1,21 +1,21 @@
 import { SimpleCard, TitleCard } from '@/components/card'
 import Header from '@/components/home/Header'
 import Section from '@/components/home/Section'
-import Layout from '@/components/Layout'
-import { postsForHome } from 'lib/page'
+import PageLayout from '@/components/layouts/page'
+import { postsForHome } from '@/lib/collectLinks'
 
 export default function IndexPage({ posts }) {
   return (
-    <Layout home>
+    <PageLayout title='Mohit Singh'>
       <Header />
-      {Object.keys(posts).map((postType, i) => (
-        <Section name={postType} key={postType}>
-          {posts[postType]?.map((post) =>
-            postType === 'Poetry' ? (
+      {posts.map(({ name, posts }) => (
+        <Section name={name} key={name}>
+          {posts?.map((post) =>
+            name === 'Poetry' ? (
               <TitleCard
                 key={post.title}
                 title={post.title}
-                link={post.link}
+                link={post.url}
                 initial={{ y: 100, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.2 }}
@@ -32,9 +32,10 @@ export default function IndexPage({ posts }) {
           )}
         </Section>
       ))}
-    </Layout>
+    </PageLayout>
   )
 }
+
 export async function getStaticProps() {
   return {
     props: {

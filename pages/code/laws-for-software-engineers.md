@@ -1,11 +1,10 @@
 ---
 title: Laws for Software Engineers
-author: Mohit Singh
 date: '2021-08-12'
-excerpt: A collection of laws related to software engineering that are fun to know and work surprisingly well.
+description: A collection of laws related to software engineering that are fun to know and work surprisingly well.
 ---
 
-Software Engineering is not always fun and sometimes we face results we never except. And then, there exits a whole set of principles and laws people came up with over time to answer these failures and patterns. So here you go &mdash;
+Software Engineering is not always fun and sometimes we face results we never except, but there exits a set of laws people came up with over time to answer these failures and patterns.
 
 ## 1. Amara's Law
 

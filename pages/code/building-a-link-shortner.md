@@ -1,17 +1,18 @@
 ---
 title: Building a link shortener
-author: Mohit Singh
 date: '2022-07-27'
-excerpt: Journey from a tiny link shortener in Node to a performant and scalable link shortener in Go.
+description: Journey from a tiny link shortener in Node to a performant and scalable link shortener in Go.
 ---
 
-A while back, I was asked to write a link shortener for a startup. It took me a day to come up with a production ready version, but I warned them about collisions and other possible limitations. I used [nanoid][nanoid] to generate IDs. They asked me to use Mongo along with Express, and I did so. Not the best choice due to limited opportunity of optimizations.
+A while back, I was asked to write a link shortener for a startup. It took me a day to come up with a production ready version, but I warned them about collisions and other possible limitations.
 
-Fast-forward a few months, that link shortener was performing well on a two core ec2 instance. I left that startup later, but one problem that stuck with me was collisions. They used to face errors due to collisions. Collisions increased with time, having some business impact.
+I used [nanoid](https://github.com/ai/nanoid) to generate IDs. They asked me to use Mongo along with Express, and I did so. Not the best choice due to limited opportunity of optimizations.
+
+A few months later, that link shortener was performing well on a two core ec2 instance. I left that startup later, but one problem that stuck with me was collisions. They used to face errors due to collisions. Collisions increased with time, having some business impact.
 
 ## Rebuilding
 
-Later, I decided to write an open source link shortener. I picked [Fiber][fiber] (Go) and PostgreSQL instead of Express and Mongo[^1]. After some hours, I had a working link shortener, which was already faster and reliable than what I created previously. I still had to fix a few things &mdash;
+Later, I decided to write an open source link shortener. I picked [Fiber](https://github.com/gofiber/fiber) (Go) and PostgreSQL instead of Express and Mongo ( A database that I try to avoid for unknown reasons ). After some hours, I had a working link shortener, which was already faster and reliable than what I created previously. I still had to fix a few things like &mdash;
 
 - Reducing lookup time
 - Minimizing failures
@@ -21,15 +22,13 @@ Later, I decided to write an open source link shortener. I picked [Fiber][fiber]
 
 ## Reducing lookup time
 
-Database lookup before creating every link was problematic. I decided to fix it first. After some digging, I came across [Probabilistic Data Structures][pds]. The possible candidates were [Bloom Filters][bf], [Cuckoo Filters][cf] and [Quotient Filters][qf]. After some testing and thinking, I picked [Bloom Filters][bf].
+Database lookup before creating every link was problematic. I decided to fix it first. After some digging, I came across [Probabilistic Data Structures](https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures). The possible candidates were [Bloom Filters](https://en.wikipedia.org/wiki/Bloom_filter), [Cuckoo Filters](https://en.wikipedia.org/wiki/Cuckoo_filter) and [Quotient Filters](https://en.wikipedia.org/wiki/Quotient_filter). After some testing and thinking, I picked [Bloom Filters](https://en.wikipedia.org/wiki/Bloom_filter).
 
-I used [bloom][bloom] after writing a thread-safe wrapper around it. By using that to lookup before generating IDs, the lookup time reduced significantly.
+I used [bloom](https://github.com/bits-and-blooms/bloom) and wrote a thread-safe wrapper around it. By using that to lookup before generating IDs, the lookup time reduced significantly.
 
 ## Minimizing failures
 
-When [Bloom Filters][bf] helped reduce lookup time, I figured out that I can utilize this reduced lookup time to minimize failures due to collisions. I implemented a recursive fallback ID generator with limit. Now, failures due to collisions were reduced, and this link shortener was almost fail-safe, yet much faster than previous one.
-
-By now, I implemented a way to back up and restore these bloom filters. In case of missing backup, I generated bloom-filters from database.
+When [Bloom Filters](https://en.wikipedia.org/wiki/Bloom_filter) helped reduce lookup time, I figured out that I can utilize this reduced lookup time to minimize failures due to collisions. I implemented a recursive fallback ID generator with limit. Now, failures due to collisions were reduced, and this link shortener was almost fail-safe, yet much faster than previous one. I also implemented a way to back up and restore these bloom filters. In case of missing backup, I generated bloom-filters from database.
 
 ## Increasing creation speed
 
@@ -37,13 +36,13 @@ Since I was no longer using the database for checking the existence of an ID, th
 
 ## Increasing retrieval speed
 
-Now that my link creation speed was way higher than retrieval, I wanted to optimize retrieval too, but I was limited by db connections. I tuned my PostgreSQL instance to have around 3000 connections[^2]. This worked, but retrieval wasn't that fast. It still isn't, but the possible solution is to put these ID link pairs in Redis and use that. The insertion can be done on startup ( Any better ideas ? ).
+Now that my link creation speed was way higher than retrieval, I wanted to optimize retrieval too, but I was limited by db connections. I tuned my PostgreSQL instance to have around 3000 connections. Since, just bumping `max_connections` doesn't work. I used [PGTune](https://pgtune.leopard.in.ua/) to generate config for 3000 connections. This worked, but retrieval wasn't that fast. It still isn't, but the possible solution is to put these ID link pairs in Redis and use that. The insertion can be done on startup ( Any better ideas ? ).
 
 ## Adding analytics
 
-Since the real benefit of link shortener for businesses was to extract data and analyze traffic from these links. I decided to implement that too. I was already getting IP and User-Agent. All I needed was a user-agent parser and an IP info parser. I found [a good parser][ua] for user agents and used [GeoLite2][geolite2] from MaxMind to parse IP info. Since every click had info, I decided to implement a worker pool and sent data there for paring and batch ingestion to avoid request slowdowns.
+Since the real benefit of link shortener for businesses was to extract data and analyze traffic from these links. I decided to implement that too. I was already getting IP and User-Agent. All I needed was a user-agent parser and an IP info parser. I found [a good parser](https://github.com/mssola/user_agent) for user agents and used [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2) from MaxMind to parse IP info. Since every click had info, I decided to implement a worker pool and sent data there for paring and batch ingestion to avoid request slowdowns.
 
-I picked [Timescale][ts] since it was already PostgreSQL based and was fast enough. [^3]. The workers ingested events fine, and I had a good amount of data-points for every single click.
+Since I had time-series data of events, I picked [Timescale](https://github.com/timescale/timescaledb) since it was already PostgreSQL based and was fast enough. I admit there were better choices like [Druid](https://github.com/apache/druid 'My favorites, but a pain to maintain') and [clickhouse](https://github.com/ClickHouse/ClickHouse 'Excellent but heavyweight'). The workers ingested events fine, and I had a good amount of data-points for every single click.
 
 ## A crazy idea
 
@@ -96,29 +95,11 @@ Director was rather simple since it was already independent of rest of the syste
 
 ## Conclusion
 
-I named this after **Wormholes**, the imaginary links between two distant points in space. The code is [open source](https://github.com/mohitsinghs/wormholes), so you can always have a look. I learned a few memory and optimization techniques during this and witnessed my failures multiple times. Learning is a continuous process like workout. We can never expect to get done either.
+I named this after **Wormholes**, the imaginary links between two distant points in space. The code is [open source](https://github.com/wormholesdev/wormholes), so you can always have a look. I learned a few memory and optimization techniques during this and witnessed my failures multiple times. Learning is a continuous process like workout. We can never expect to get done either.
 
 I'm still left with some questions &mdash;
 
-- Can we deploy it to k8s ?
+- Should we join the k8s hype with a config ?
 - What other ways are there to make this even more fast and reliable ?
 - How Cassandra, Scylla and Druid will perform compared to current database choices ?
 - Should we use tools like Metabase, Superset, Redash etc to visualize, or a custom dashboard with auth will work better ?
-
-[nanoid]: https://github.com/ai/nanoid
-[fiber]: https://github.com/gofiber/fiber
-[pds]: https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures
-[bf]: https://en.wikipedia.org/wiki/Bloom_filter
-[cf]: https://en.wikipedia.org/wiki/Cuckoo_filter
-[qf]: https://en.wikipedia.org/wiki/Quotient_filter
-[dablooms]: https://github.com/bitly/dablooms
-[bloom]: https://github.com/bits-and-blooms/bloom
-[pgtune]: https://pgtune.leopard.in.ua/
-[ua]: https://github.com/mssola/user_agent
-[geolite2]: https://dev.maxmind.com/geoip/geoip2/geolite2/
-[ts]: https://github.com/timescale/timescaledb
-[druid]: https://github.com/apache/druid
-
-[^1]: A database that I try to avoid
-[^2]: Since, just bumping `max_connections` doesn't work. I used [PGTune][pgtune] to generate config for 3000 connections.
-[^3]: I admit there were better choices and [Druid][druid] is one of my favorites, but that's a pain to maintain.

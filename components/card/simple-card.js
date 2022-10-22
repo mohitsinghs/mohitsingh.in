@@ -1,19 +1,20 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Calendar, ChevronRight, Clock } from 'react-feather'
+import { Calendar, Clock, TextLeft } from 'react-bootstrap-icons'
 
 export function SimpleCard({
-  link,
+  url,
   title,
   date,
   time,
+  words,
   excerpt,
   initial,
   whileInView,
   transition,
 }) {
   return (
-    <Link href={link}>
+    <Link href={url}>
       <motion.li
         className='flex flex-col p-4 w-full cursor-pointer'
         initial={initial}
@@ -22,14 +23,18 @@ export function SimpleCard({
       >
         <h3 className='mb-2 text-xl font-bold text-slate-600'>{title}</h3>
         {date && (
-          <p className='mb-2 text-sm font-medium text-slate-600 md:text-xs'>
-            <span className='mr-2'>
-              <Calendar size={14} className='inline mr-1' />
-              {new Date(date).toDateString()}
+          <p className='mb-2 text-sm font-medium text-slate-600 md:text-xs inline-flex items-center'>
+            <span className='mr-2.5'>
+              <Calendar size={12} className='inline mr-1.5' />
+              {date}
             </span>
-            <span className='ml-2'>
-              <Clock size={14} className='inline mr-1' />
+            <span className='ml-2.5'>
+              <Clock size={12} className='inline mr-1.5' />
               {time}
+            </span>
+            <span className='ml-2.5'>
+              <TextLeft size={12} className='inline mr-1.5' />
+              {words}
             </span>
           </p>
         )}
@@ -38,13 +43,6 @@ export function SimpleCard({
             {excerpt}
           </p>
         )}
-        <a
-          className='self-end px-4 py-2 mt-4 max-w-max text-sm font-medium text-slate-600 cursor-pointer select-none hover:text-slate-700'
-          href={link}
-        >
-          Continue Reading
-          <ChevronRight className='inline ml-2 w-auto h-4' size={16} />
-        </a>
       </motion.li>
     </Link>
   )

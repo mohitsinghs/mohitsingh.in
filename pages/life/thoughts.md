@@ -1,7 +1,6 @@
 ---
 title: A collection of random thoughts
-author: Mohit Singh
-excerpt: This is a collection of random thoughts dumped in the form of a blog post. These thoughts are my personal views and opinions and are by no mean absolute.
+description: This is a collection of random thoughts dumped in the form of a blog post. These thoughts are my personal views and opinions and are by no mean absolute.
 date: '2021-08-03'
 ---
 
