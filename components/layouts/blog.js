@@ -3,13 +3,13 @@ import Navbar from '@/components/navigation/navbar'
 import Toc from '@/components/navigation/toc'
 import SeoHeader from './seo'
 
-export default function BlogLayout({ children, title, excerpt, toc }) {
+export default function BlogLayout({ children, title, description, toc }) {
   return (
     <>
       <main className='flex flex-col flex-grow flex-shrink-0'>
-        <SeoHeader title={title} excerpt={excerpt} />
+        <SeoHeader title={title} excerpt={description} />
         <Navbar />
-        <Header description={excerpt} title={title} />
+        <Header description={description} title={title} />
         <article
           className='py-4 px-4 sm:px-6 lg:px-8 flex w-full max-w-5xl mx-auto'
           itemID='#'
