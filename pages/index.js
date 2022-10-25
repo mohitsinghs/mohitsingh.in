@@ -1,5 +1,6 @@
-import { SimpleCard, TitleCard } from '@/components/card'
+import { SimpleCard } from '@/components/card'
 import Header from '@/components/home/Header'
+import Poetry from '@/components/home/Poetry'
 import Section from '@/components/home/Section'
 import PageLayout from '@/components/layouts/page'
 import { postsForHome } from '@/lib/collectLinks'
@@ -8,11 +9,11 @@ export default function IndexPage({ posts }) {
   return (
     <PageLayout title='Mohit Singh'>
       <Header />
-      {posts.map(({ name, posts }) => (
-        <Section name={name} key={name}>
-          {posts?.map((post) =>
-            name === 'Poetry' ? (
-              <TitleCard
+      {posts.map(({ name, posts }) =>
+        name === 'Poetry' ? (
+          <Poetry name={name} key={name}>
+            {posts?.map((post) => (
+              <Poetry.Card
                 key={post.title}
                 title={post.title}
                 link={post.url}
@@ -20,7 +21,11 @@ export default function IndexPage({ posts }) {
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.2 }}
               />
-            ) : (
+            ))}
+          </Poetry>
+        ) : (
+          <Section name={name} key={name}>
+            {posts?.map((post) => (
               <SimpleCard
                 key={post.title}
                 {...post}
@@ -28,10 +33,10 @@ export default function IndexPage({ posts }) {
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.2 }}
               />
-            )
-          )}
-        </Section>
-      ))}
+            ))}
+          </Section>
+        )
+      )}
     </PageLayout>
   )
 }
