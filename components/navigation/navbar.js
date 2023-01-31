@@ -8,7 +8,7 @@ export default function Navbar({ full }) {
       <div
         className={clsx([
           'flex w-full flex-wrap items-center justify-between px-4 sm:px-6 lg:px-8',
-          full ? 'lg:w-4/5 w-full' : 'max-w-7xl',
+          full ? 'lg:w-4/5 w-full' : 'max-w-5xl',
         ])}
       >
         <div className='relative flex flex-grow basis-0 items-center'>

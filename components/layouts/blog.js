@@ -11,7 +11,7 @@ export default function BlogLayout({ children, title, description, toc }) {
         <Navbar />
         <Header description={description} title={title} />
         <article
-          className='py-4 px-4 sm:px-6 lg:px-8 flex w-full max-w-7xl mx-auto'
+          className='py-4 px-4 sm:px-6 lg:px-8 flex w-full max-w-5xl mx-auto'
           itemID='#'
           itemScope
           itemType='http://schema.org/BlogPosting'
