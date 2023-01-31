@@ -7,7 +7,7 @@ function Section({ name, children }) {
       <h2 className='py-8 text-3xl text-center leading-loose font-bold tracking-wide text-slate-600'>
         {name}
       </h2>
-      <ul className='grid grid-flow-row auto-rows-fr gap-8 md:grid-flow-col'>
+      <ul className='grid grid-flow-row auto-rows-fr gap-8 md:grid-cols-2'>
         {children}
       </ul>
       <Link

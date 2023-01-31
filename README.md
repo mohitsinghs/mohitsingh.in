@@ -1,1 +1,1 @@
-# mohitsinghs.github.io
+# mohitsingh.in

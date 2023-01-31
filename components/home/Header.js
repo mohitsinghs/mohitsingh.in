@@ -1,31 +1,16 @@
-import { motion } from 'framer-motion'
-
 export default function Header() {
   return (
-    <header className='flex flex-col items-center py-16 w-full'>
-      <h1 className='text-4xl font-bold text-slate-800 md:text-5xl'>
-        <motion.span
-          initial={{ y: 100, rotate: 0, opacity: 0 }}
-          whileInView={{
-            y: 0,
-            rotate: -6,
-            opacity: 1,
-          }}
-          transition={{
-            type: 'spring',
-            duration: 0.5,
-            damping: 5,
-            stiffness: 50,
-          }}
-          className='relative bg-slate-800 px-4 py-2.5 rounded-xl text-slate-100 inline-block'
-        >
-          <span className='absolute bg-slate-800 top-0 left-16 -mt-60 w-1 rotate-6 h-64' />
-          Mohit
-        </motion.span>
-
-        <span className='px-4'>Singh</span>
-      </h1>
-      <p className='py-4 font-light text-slate-700'>A human and dreamer</p>
+    <header className='py-16 w-full px-4 bg-slate-50'>
+      <div className='mx-auto max-w-5xl'>
+        <h1 className='text-3xl sm:text-4xl font-bold leading-tight text-gray-700 max-w-2xl sm:leading-tight'>
+          Software engineer with some bits of calisthenics and astrophysics.
+        </h1>
+        <p className='mt-6 text-gray-600 max-w-2xl leading-relaxed'>
+          I am Mohit Singh, a software engineer based in a remote village of
+          North India with some interest in calisthenics and astrophysics. I
+          occasionally work with organizations to help them build their dreams.
+        </p>
+      </div>
     </header>
   )
 }

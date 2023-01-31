@@ -1,24 +1,17 @@
 /* Toolbox */
 
 .toolbox {
-  @apply flex h-8 w-full items-center justify-between px-2 text-sm leading-none text-code-text;
-}
-
-.toolbox .controls {
-  @apply inline-flex;
-}
-.toolbox .controls span {
-  @apply h-2.5 w-2.5 rounded-full bg-code-white my-1.5 mx-1;
+  @apply flex h-8 w-full items-center justify-between px-4 text-sm font-bold leading-none text-code-text border-b border-code-term;
 }
 
 .toolbox > svg {
-  @apply cursor-pointer hover:text-code-white mx-2;
+  @apply cursor-pointer hover:text-code-white ml-2;
 }
 
 /* Decorations */
 
 code {
-  @apply bg-code-storm;
+  @apply bg-code-storm inline-block leading-tight rounded;
 }
 
 code[class*='language-'],
@@ -61,7 +54,7 @@ code[class*='language-'] ::selection {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  @apply text-code-comment;
+  @apply text-code-comment italic;
 }
 
 .token.property-access,

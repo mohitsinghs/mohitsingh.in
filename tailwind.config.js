@@ -11,7 +11,7 @@ module.exports = {
         code: {
           storm: '#24283b',
           term: '#414868',
-          comment: '#414868',
+          comment: '#565f89',
           markup: '#9aa5ce',
           props: '#7dcfff',
           regex: '#b4f9f8',
@@ -59,7 +59,7 @@ module.exports = {
             },
             code: {
               color: theme('colors.code.white'),
-              backgroundColor: theme('colors.code.black'),
+              backgroundColor: theme('colors.code.storm'),
               padding: '0.25rem 0.5rem',
               margin: '0 0.25rem',
               fontWeight: '600',

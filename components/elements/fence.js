@@ -32,11 +32,6 @@ export function Fence({ children, language }) {
       {({ className, style, tokens, getTokenProps, getLineProps }) => (
         <pre className={className} style={style}>
           <div className='toolbox'>
-            <p className='controls'>
-              <span className='close' />
-              <span className='min' />
-              <span className='max' />
-            </p>
             <p>{langs[language]}</p>
             <ClipboardFill size={12} onClick={copyToClipboard} />
           </div>

@@ -15,7 +15,7 @@
     "@fontsource/kalam": "^4.5.10",
     "@fontsource/poppins": "^4.5.10",
     "@headlessui/react": "^1.7.3",
-    "@markdoc/markdoc": "^0.1.13",
+    "@markdoc/markdoc": "^0.2.1",
     "@markdoc/next.js": "^0.2.0",
     "@sindresorhus/slugify": "^2.1.1",
     "@tailwindcss/typography": "^0.5.7",
