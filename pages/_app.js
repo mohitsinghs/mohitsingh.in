@@ -12,17 +12,12 @@ require('prismjs/components/prism-properties')
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
-  const isIndexPage = ['/code', '/poetry', '/life'].includes(router.pathname)
   const isPoetry = router.pathname.startsWith('/poetry')
-  const hasFront =
-    !isIndexPage &&
-    (router.pathname.startsWith('/code') ||
-      router.pathname.startsWith('/life') ||
-      isPoetry)
-  if (hasFront) {
+  if (pageProps?.markdoc?.frontmatter) {
     const fm = pageProps.markdoc?.frontmatter
     const toc = collectHeadings(pageProps.markdoc?.content) || []
     const Layout = isPoetry ? PoetryLayout : BlogLayout
+    const showToc = !isPoetry && fm?.toc !== false
     return (
       <>
         <Head>
@@ -31,7 +26,7 @@ const App = ({ Component, pageProps }) => {
             content='width=device-width, initial-scale=1.0'
           />
         </Head>
-        <Layout {...(fm || {})} {...(!isPoetry && { toc })}>
+        <Layout {...(fm || {})} {...(showToc && { toc })}>
           <Component {...pageProps} />
         </Layout>
       </>

@@ -12,7 +12,7 @@ function Section({ name, children }) {
       </ul>
       <Link
         href={`/${name.toLowerCase()}`}
-        className='flex items-center self-end mt-8 text-sm font-bold text-gray-600 cursor-pointer select-none hover:text-gray-700'
+        className='flex items-center self-end mt-8 text-sm font-bold text-slate-600 cursor-pointer select-none hover:text-slate-700'
       >
         Read More
         <ChevronRight size={16} />

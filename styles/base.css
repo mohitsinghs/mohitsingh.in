@@ -1,3 +1,3 @@
 #__next {
-  @apply relative flex flex-col min-h-screen antialiased selection:bg-gray-700 selection:text-white;
+  @apply relative flex flex-col min-h-screen antialiased selection:bg-slate-700 selection:text-white;
 }
