@@ -7,13 +7,7 @@ function CodePage({ title, description, posts }) {
     <ArchiveLayout title={title} description={description}>
       <ul className='grid grid-cols-1 gap-8 mx-auto lg:w-4/5 w-full md:grid-cols-2 xl:grid-cols-3'>
         {posts.map((post) => (
-          <SimpleCard
-            key={post.title}
-            {...post}
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.2 }}
-          />
+          <SimpleCard key={post.title} {...post} />
         ))}
       </ul>
     </ArchiveLayout>

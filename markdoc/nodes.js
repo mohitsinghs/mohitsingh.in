@@ -19,6 +19,15 @@ const nodes = {
       frontmatter: { render: false },
     },
   },
+  link: {
+    render: 'a',
+    children: ['strong', 'em', 's', 'code', 'text', 'tag'],
+    attributes: {
+      href: { type: String, required: true },
+      title: { type: String },
+      rel: { type: String, default: 'nofollow noopener' },
+    },
+  },
   fence: {
     render: Fence,
     attributes: {

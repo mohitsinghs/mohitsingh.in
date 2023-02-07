@@ -7,7 +7,10 @@ import { postsForHome } from '@/lib/collectLinks'
 
 export default function IndexPage({ posts }) {
   return (
-    <PageLayout title='Mohit Singh'>
+    <PageLayout
+      title='Mohit Singh | Probably a Software Engineer'
+      description='An annoyingly curious creature with dark powers and a jack of several dozen unrelated trades disguised as a software engineer'
+    >
       <Header />
       {posts.map(({ name, posts }) => (
         <Section name={name} key={name}>

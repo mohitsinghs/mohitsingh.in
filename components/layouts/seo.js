@@ -4,14 +4,14 @@ import { useRouter } from 'next/router'
 export default function SeoHeader({ title, excerpt }) {
   const router = useRouter()
   const isPoetry = router.pathname.startsWith('/poetry')
-  const isBlog =
-    router.pathname.startsWith('/code') || router.pathname.startsWith('/life')
+  const isBlog = router.pathname.startsWith('/code')
   let currentTitle = 'Mohit Singh'
   if (isBlog) {
-    currentTitle = `${title} - Mohit Singh`
-  }
-  if (isPoetry) {
-    currentTitle = `${title} - मोहित सिंह`
+    currentTitle = `${title} | Mohit Singh`
+  } else if (isPoetry) {
+    currentTitle = `${title} | मोहित सिंह`
+  } else if (title) {
+    currentTitle = title
   }
   return (
     <Head>
