@@ -3,7 +3,7 @@ import { ChevronRight } from 'react-bootstrap-icons'
 
 function Section({ name, children }) {
   return (
-    <section className='flex flex-col p-4 mx-auto w-full max-w-5xl'>
+    <section className='flex flex-col mx-auto w-full max-w-7xl'>
       <h2 className='py-8 text-3xl text-center leading-loose font-bold tracking-wide text-slate-600'>
         {name}
       </h2>

@@ -18,8 +18,8 @@ export async function getStaticProps() {
   const posts = await collectLinks('poetry')
   return {
     props: {
-      title: 'भारत दर्शन',
-      description: 'वर्तमान भारतीय समाज का काव्यगत विश्लेषण',
+      title: 'कवितायें',
+      description: 'मेरा काव्यात्मक दृष्टिकोण',
       posts,
     },
   }

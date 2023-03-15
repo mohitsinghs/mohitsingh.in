@@ -7,7 +7,7 @@ export default function ArchiveLayout({ children, title, description }) {
     <>
       <main className='flex flex-col flex-grow flex-shrink-0'>
         <SeoHeader title={title} excerpt={description} />
-        <Navbar full />
+        <Navbar />
         <Header title={title} description={description} center />
         {children}
       </main>
