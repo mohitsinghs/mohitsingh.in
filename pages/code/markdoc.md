@@ -10,7 +10,7 @@ More than a year back, I stumbled upon a post by Stripe team. They announced a n
 
 ## Syntax Highlighting
 
-I use VSCode and NeoVim as my favorite editors. The first thing I needed was syntax highlighting for Markdoc in these two editors.
+I use VSCode and Neovim as my favorite editors. The first thing I needed was syntax highlighting for Markdoc in these two editors.
 
 ### Highlighting Markdoc in VSCode
 
@@ -18,7 +18,7 @@ I started with a Textmate Grammar on the top of Markdown and added Markdoc speci
 
 In second iteration, I isolated Markdoc specific highlights and generated Markdoc syntax by dynamically adding these highlights into Markdown grammar via a script. Now, All I had to maintain was the Markdoc grammar. Soon, I realized, I wasn't following specs as clearly as possible.
 
-Meanwhile, I learned from my NeoVim syntax highlighting adventure that I can do the opposite and inject markdown grammar into markdoc.
+Meanwhile, I learned from my Neovim syntax highlighting adventure that I can do the opposite and inject markdown grammar into markdoc.
 
 In third iteration, I had a textmate grammar that was just for Markdoc and as close to specs as possible with Markdown syntax injected to it.
 
@@ -26,15 +26,13 @@ In third iteration, I had a textmate grammar that was just for Markdoc and as cl
 
 My another favorite editor was missing Markdoc highlighting, so after I finished first iteration of Markdoc grammar, I tried writing a tree-sitter parser for Markdoc. It was a very new and exciting thing for me. I did the opposite of what I did for VSCode and instead of deriving from Markdown, I injected Markdown inside Markdoc. With time I refined it to some extent but compared to VSCode, It was very easy and straightforward to work with.
 
-> This is what I like about tools, they should be easy to use with minimum effort possible. Allowing optional adventures is a totally separate thing that can be done in parallel. Unix is great example.
-
 ## A language Server
 
-I wrote a language server for Markdoc. Initially it allowed some basic completions and formatting. Markdoc relies on a config file and the Next plugin for Markdoc does some magic to make it work but it changes the file a bit.
+Since the VSCode extension had highlights only, I decided to write language server for Markdoc. Initially it allowed some basic completions and formatting. Markdoc relies on a config file and the Next plugin for Markdoc does some magic to make it work but it changes the file a bit.
 
 For the language server, I decided to detect config automatically. I did it for Next and with help from [Ben Holmes](https://github.com/bholmesdev) of Astro team, I was able to do it for Astro.
 
-> Ben was second person during a decade of my Github adventure that was helpful and kind. The first will be [Thomas Smith](https://github.com/Thom1729).
+> Ben was second person during a decade of my Github adventure that was helpful and kind. The first will be [Thomas Smith](https://github.com/Thom1729). This kind is truly rare.
 
 I started writing a parser that could allow detecting partial Markdoc syntax. It's still in infancy but it allowed me to properly perform some analysis that I couldn't do with markdoc parser. My goal was to slowly build a language server in a way that requires minimal user interaction.
 
@@ -44,8 +42,15 @@ Meanwhile, In my projects, I started facing drawback of Markdoc. For example, I 
 
 At the same time, Markdoc team released the extension for VSCode along with a language server that I was really excited about. I realized it required another config for language server. After fighting it an entire day, I gave up. Upon digging, I figured out, while the language server and extensions were feature rich, they were tuned for specific purpose and thinking.
 
-While I was trying to avoid yet another config, this new language server required another config. I can totally understand that, since it's something open source and used by Stripe. They have no obligation to listen but as a user, I was unhappy. I figured, it was not for people like me who don't want to fight their tooling unnecessarily.
+While I was trying to avoid yet another config, this new language server required another config. I can totally understand that, since it's their lawn. They have no obligation to listen but as a user, I was unhappy. I figured, it was not for people like me who don't want to fight their tooling unnecessarily.
 
 ## Wrapping up
 
 A day later, I spent some time writing a library that used unified ecosystem to process Markdown and some syntax sugar that I needed. From there jumping back to plain Markdown was really easy. A year of Markdoc lost me in a day. I migrated my sites to app router the new library allowed me to avoid thinking about static content and focus on dynamic and component driven parts.
+
+## Updates
+
+So far I created three tools for Markdoc under an organization [markdoc-extra](https://github.com/markdoc-extra). [vscode-markdoc](https://github.com/markdoc-extra/vscode-markdoc), [markdoc-ls](https://github.com/markdoc-extra/markdoc-ls) and [tree-sitter-markdoc](https://github.com/markdoc-extra/tree-sitter-markdoc).
+While I learned a lot during this journey and it was fun while it lasted, Markdoc now have proper official tooling and since I went back to my old setup with some improvement, there is a very little chance that I'll be working with Markdoc anymore.
+
+That's why I've decided to archive the organization. If someone wants to carry it forward I'll be more than happy to add them as maintainer.
