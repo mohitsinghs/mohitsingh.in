@@ -23,12 +23,6 @@ export default function Navbar() {
           </Link>
           <Link
             className='text-sm tracking-wide leading-6 font-medium text-slate-600 hover:text-slate-800'
-            href='/rants'
-          >
-            Rant
-          </Link>
-          <Link
-            className='text-sm tracking-wide leading-6 font-medium text-slate-600 hover:text-slate-800'
             href='/poetry'
           >
             Poetry

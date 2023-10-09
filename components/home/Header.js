@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CodeSlash, Pen, Trash3 } from 'react-bootstrap-icons'
+import { CodeSlash, Pen } from 'react-bootstrap-icons'
 
 export function JumpLink({ href, children }) {
   return (
@@ -28,9 +28,6 @@ export default function Header() {
         <nav className='flex gap-4 mt-2'>
           <JumpLink href='/code'>
             <CodeSlash className='inline mr-1' size={16} /> Code
-          </JumpLink>
-          <JumpLink href='/rants'>
-            <Trash3 className='inline mr-1' size={16} /> Rants
           </JumpLink>
           <JumpLink href='/poetry'>
             <Pen className='inline mr-1' size={16} /> Poetry
