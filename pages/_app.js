@@ -4,6 +4,7 @@ import collectHeadings from '@/lib/collectHeadings'
 import '@/styles/index.css'
 import '@fontsource/kalam/devanagari.css'
 import '@fontsource/poppins/latin.css'
+import { GoogleTagManager } from '@next/third-parties/google'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Prism from 'prism-react-renderer/prism'
@@ -28,6 +29,7 @@ const App = ({ Component, pageProps }) => {
         </Head>
         <Layout {...(fm || {})} {...(showToc && { toc })}>
           <Component {...pageProps} />
+          <GoogleTagManager gtmId='G-FF6JGZ4DLS' />
         </Layout>
       </>
     )
