@@ -1,12 +1,13 @@
-const withMarkdoc = require('@markdoc/next.js')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: false,
+})
 
-module.exports = withMarkdoc()({
+module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   pageExtensions: ['js', 'md'],
-  images: {
-    unoptimized: true,
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
+  output: 'export',
 })

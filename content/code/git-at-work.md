@@ -12,7 +12,7 @@ In order to isolate my work github account from my personal one when cloning, I'
 
 Below is a my `~/.ssh/config` which allows me to have two hosts **github.com** and **gh-work** both of which use different ssh keys.
 
-```properties
+```ssh-config ~/.ssh/config
 Host github.com
    HostName github.com
    User git
@@ -30,7 +30,7 @@ So when cloning something for work, it becomes `git@gh-work` instead of `git@git
 
 My personal git config lives in my dotfiles. For work related code, I've a dedicated repository named `~/Work`. In order to change git config inside this repository, I've put a `gitconfig` in it's root which contains nothing more than my name and email for work.
 
-```properties
+```properties ~/Work/.gitconfig
 [user]
 	name = some-work-name
 	email = my-work-email
@@ -38,7 +38,7 @@ My personal git config lives in my dotfiles. For work related code, I've a dedic
 
 and in order to apply this when I am under work directory, I've added following to my `~/.gitconfig`.
 
-```properties
+```properties ~/.gitconfig
 [includeIf "gitdir:~/Work/"]
   path = ~/Work/.gitconfig
 ```

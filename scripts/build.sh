@@ -3,9 +3,7 @@ SITE_URL="mohitsingh.in"
 OUT_DIR="out"
 
 # build site first
-next build
-# now export static content
-next export
+CONTENT_DIR="content" next build
 
 # a .nojekyll file to inform github pages that
 # it's not a jekyll site
@@ -30,13 +28,13 @@ sm='<?xml version="1.0" encoding="UTF-8"?>
 '
 # loop over all html file
 for file in "$OUT_DIR"/**/*.html "$OUT_DIR"/*.html; do
-	# convert current file to urls
-	current=$(echo "$file" | rev | cut -d '.' -f 2- | rev | cut -d '/' -f 2-)
-	loc="https://$SITE_URL/$current"
-	# treat index and 404 differently
-	[[ $file == "$OUT_DIR/index.html" ]] && loc="https://$SITE_URL"
-	[[ $file == "$OUT_DIR/404.html" ]] && continue
-	sm="$sm  <url>
+  # convert current file to urls
+  current=$(echo "$file" | rev | cut -d '.' -f 2- | rev | cut -d '/' -f 2-)
+  loc="https://$SITE_URL/$current"
+  # treat index and 404 differently
+  [[ $file == "$OUT_DIR/index.html" ]] && loc="https://$SITE_URL"
+  [[ $file == "$OUT_DIR/404.html" ]] && continue
+  sm="$sm  <url>
     <loc>$loc</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>

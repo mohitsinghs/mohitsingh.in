@@ -1,31 +1,11 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
-  content: ['./components/**/*.js', './pages/**/*.js'],
+  content: ['./app/**/*.js', './components/**/*.js'],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'Kalam', ...defaultTheme.fontFamily.sans],
-      },
-      colors: {
-        code: {
-          storm: '#24283b',
-          term: '#414868',
-          comment: '#565f89',
-          markup: '#9aa5ce',
-          props: '#7dcfff',
-          regex: '#b4f9f8',
-          string: '#9ece6a',
-          constant: '#ff9e64',
-          text: '#a9b1d6',
-          white: '#c0caf5',
-          magenta: '#bb9af7',
-          blue: '#7aa2f7',
-          green: '#73daca',
-          yellow: '#e0af68',
-          red: '#f7768e',
-          selection: 'rgba(148, 170, 209, 0.2)',
-        },
+        sans: ['var(--font-sans)'],
+        hi: ['var(--font-hi)'],
+        mono: ['var(--font-mono)'],
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -36,12 +16,6 @@ module.exports = {
             },
             a: {
               color: theme('colors.gray.600'),
-            },
-            pre: {
-              paddingTop: 0,
-              paddingBottom: 0,
-              paddingRight: 0,
-              paddingLeft: 0,
             },
             blockquote: {
               fontWeight: 'normal',
@@ -58,17 +32,41 @@ module.exports = {
               content: '',
             },
             code: {
-              color: theme('colors.code.white'),
-              backgroundColor: theme('colors.code.storm'),
-              padding: '0.25rem 0.5rem',
-              margin: '0 0.25rem',
-              fontWeight: '600',
+              padding: '0.125rem 0.25rem',
+              background: theme('colors.gray.50'),
+              borderRadius: '0.125rem',
+              fontWeight: 'normal',
+              fontSize: '0.875rem',
+              border: `1px solid ${theme('colors.gray.100')}`,
             },
             'code::before': {
               content: '""',
             },
             'code::after': {
               content: '""',
+            },
+            pre: {
+              marginTop: 0,
+              marginBottom: 0,
+              borderRadius: '0 0 0.375rem 0.375rem',
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: '0.5rem',
+              paddingBottom: '0.5rem',
+            },
+            'pre code': {
+              display: 'block',
+              minWidth: 'fit-content',
+            },
+            'pre code > span': {
+              display: 'block',
+              padding: '0 1rem',
+              fontSize: '0.875rem',
+              lineHeight: '1.625',
+            },
+            'pre code > span > span:first-child': {
+              marginRight: '1.5ch',
+              textAlign: 'right',
             },
           },
         },
