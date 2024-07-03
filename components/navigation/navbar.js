@@ -17,9 +17,9 @@ export default function Navbar() {
         <div className='relative flex basis-0 items-center justify-end gap-6 sm:gap-8 md:flex-grow'>
           <Link
             className='text-sm tracking-wide leading-6 font-medium text-slate-600 hover:text-slate-800'
-            href='/code'
+            href='/posts'
           >
-            Code
+            Posts
           </Link>
           <Link
             className='text-sm tracking-wide leading-6 font-medium text-slate-600 hover:text-slate-800'

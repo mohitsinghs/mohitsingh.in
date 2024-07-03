@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import { CodeSlash, Pen } from 'react-bootstrap-icons'
 
 export function JumpLink({ href, children }) {
   return (
     <Link
-      className='text-xs tracking-wide leading-6 font-medium text-slate-100 px-4 py-1 rounded-md hover:-rotate-2 hover:translate-y-1 hover:text-slate-200 bg-slate-700 hover:bg-slate-800 transition-all ease-in-out duration-200 shadow-sm hover:shadow-md'
+      className='text-xs leading-6 font-medium text-slate-100 px-8 py-1 rounded-md hover:-translate-y-0.5 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 transition-all ease-in-out duration-200 shadow-sm hover:shadow-md'
       href={href}
     >
       {children}
@@ -26,12 +25,8 @@ export default function Header() {
         </p>
 
         <nav className='flex gap-4 mt-2'>
-          <JumpLink href='/code'>
-            <CodeSlash className='inline mr-1' size={16} /> Code
-          </JumpLink>
-          <JumpLink href='/poetry'>
-            <Pen className='inline mr-1' size={16} /> Poetry
-          </JumpLink>
+          <JumpLink href='/posts'>Posts</JumpLink>
+          <JumpLink href='/poetry'>Poetry</JumpLink>
         </nav>
       </div>
     </header>

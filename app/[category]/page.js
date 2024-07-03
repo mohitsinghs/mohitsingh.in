@@ -4,13 +4,13 @@ import { getCategories, getPosts, getTitle } from '@mohitsingh/contempt'
 import clsx from 'clsx'
 
 const titleDescByCategory = {
-  code: {
-    title: 'Code',
+  posts: {
+    title: 'Posts',
     description: 'Random bits and bytes',
   },
   poetry: {
-    title: 'कवितायें',
-    description: 'मेरा काव्यात्मक दृष्टिकोण',
+    title: 'Poetry',
+    description: 'My poetic perspective',
   },
 }
 
@@ -50,7 +50,7 @@ export default async function ArchivePage({ params }) {
             <TitleCard key={post.title} {...post} />
           ) : (
             <SimpleCard key={post.title} {...post} />
-          ),
+          )
         )}
       </ul>
     </>
